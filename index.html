@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>物理 Ch1–Ch3 重點</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: 一欄式讀書筆記，淡方格紙底；每小節一張卡，公式用等寬字卡片，代號上方標中文 */
+:root {
+  --bg: #f5f6fa;
+  --paper: #ffffff;
+  --grid: #e5e7f1;
+  --fg: #1a1f33;
+  --muted: #596079;
+  --line: #d5d9e8;
+  --accent: #4553b8;
+  --accent-soft: #e6e9f8;
+  --ch1: #4553b8;
+  --ch2: #d9860a;
+  --ch3: #2f9a6a;
+  --warn: #c2412d;
+  --warn-soft: #fbe9e5;
+  --hl: #fff2b8;
+  --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11131c; --paper: #181b27; --grid: #1c2030; --fg: #e4e7f2; --muted: #9aa1bb; --line: #2c3146;
+  --accent: #97a3ff; --accent-soft: #252a45; --ch1: #97a3ff; --ch2: #f0a53a; --ch3: #5fd09c;
+  --warn: #ff8a73; --warn-soft: #3a211c; --hl: #4a4115;
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11131c; --paper: #181b27; --grid: #1c2030; --fg: #e4e7f2; --muted: #9aa1bb; --line: #2c3146;
+  --accent: #97a3ff; --accent-soft: #252a45; --ch1: #97a3ff; --ch2: #f0a53a; --ch3: #5fd09c;
+  --warn: #ff8a73; --warn-soft: #3a211c; --hl: #4a4115;
+  color-scheme: dark }
+
+* { box-sizing: border-box; }
+body {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  padding-inline: 16px;
+  padding-block: 28px 64px;
+}
+.wrap { max-width: 900px; margin: 0 auto; display: grid; gap: 28px; }
+
+header.top { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; display: grid; gap: 10px; }
+header.top .eyebrow { font-size: 13px; letter-spacing: .12em; color: var(--accent); font-weight: 700; }
+header.top h1 { margin: 0; font-size: clamp(26px, 5vw, 36px); font-weight: 900; line-height: 1.25; text-wrap: balance; }
+header.top p { margin: 0; color: var(--muted); }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+nav.toc a { font-size: 14px; text-decoration: none; color: var(--fg); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; background: var(--bg); }
+nav.toc a:hover, nav.toc a:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
+nav.toc a.c1 { border-left: 4px solid var(--ch1); }
+nav.toc a.c2 { border-left: 4px solid var(--ch2); }
+nav.toc a.c3 { border-left: 4px solid var(--ch3); }
+
+.chapter { display: flex; align-items: baseline; gap: 14px; margin-top: 12px; padding-bottom: 8px; border-bottom: 2px dashed var(--line); }
+.chapter .num { font-family: var(--mono); font-size: 44px; font-weight: 700; line-height: 1; }
+.chapter.c1 .num { color: var(--ch1); }
+.chapter.c2 .num { color: var(--ch2); }
+.chapter.c3 .num { color: var(--ch3); }
+.chapter h2 { margin: 0; font-size: 28px; font-weight: 900; }
+
+section.sec { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; display: grid; gap: 14px; min-width: 0; scroll-margin-top: 16px; }
+section.sec h3 { margin: 0; font-size: 20px; font-weight: 700; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+section.sec h3 .id { font-family: var(--mono); font-size: 15px; color: var(--accent); background: var(--accent-soft); border-radius: 6px; padding: 1px 8px; }
+section.sec.lab { border-style: dashed; }
+
+.tbl { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+th { font-size: 13px; letter-spacing: .06em; color: var(--muted); font-weight: 700; background: var(--bg); }
+td:first-child { font-weight: 700; white-space: nowrap; }
+tr:last-child td { border-bottom: none; }
+
+.f { font-family: var(--mono); font-weight: 500; }
+ruby { ruby-position: over; ruby-align: center; margin-inline: 1px; }
+rt { font-family: var(--sans); font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0; line-height: 1.2; }
+td .f, td.f { line-height: 2.3; }
+.formulas { display: flex; flex-wrap: wrap; gap: 10px; }
+.formulas .f { background: var(--accent-soft); color: var(--fg); border-radius: 8px; padding: 12px 12px 6px; font-size: 16px; line-height: 2.1; }
+mark { background: var(--hl); color: inherit; padding: 0 3px; border-radius: 3px; }
+
+.note { border-radius: 10px; padding: 10px 14px; font-size: 15px; display: grid; gap: 4px; }
+.note b.tag { font-size: 13px; letter-spacing: .08em; }
+.note.warn { background: var(--warn-soft); }
+.note.warn b.tag { color: var(--warn); }
+.note.ex { background: var(--bg); border: 1px dashed var(--line); }
+.note.ex b.tag { color: var(--accent); }
+.note p { margin: 0; }
+ul.pts { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; }
+
+.graphs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.graph { border: 1px solid var(--line); border-radius: 10px; padding: 10px; display: grid; gap: 4px; min-width: 0; }
+.graph svg { width: 100%; height: auto; display: block; }
+.graph .cap { font-size: 14px; color: var(--muted); }
+.graph .cap b { color: var(--fg); }
+svg .ax { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+svg .ln { stroke: var(--accent); stroke-width: 3; fill: none; }
+svg .area { fill: var(--accent-soft); }
+svg text { fill: var(--muted); font-family: var(--mono); font-size: 13px; }
+
+footer { color: var(--muted); font-size: 13px; text-align: center; }
+@media (max-width: 520px) {
+  section.sec { padding: 16px 14px; }
+  th, td { padding: 7px 7px; }
+  td:first-child { white-space: normal; }
+}
+</style>
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="top">
+  <div class="eyebrow">高職一年級 · 物理 · 第一次段考</div>
+  <h1>第一章 緒論 ＋ 第二章 直線運動 ＋ 第三章 平面運動 重點整理</h1>
+  <p>先看每節的公式卡，再看表格；公式裡每個代號上方都標了中文名稱。紅色框是常考陷阱，虛線框是例題。</p>
+  <nav class="toc" aria-label="目錄">
+    <a class="c1" href="#s1-1">1-1 發展史</a><a class="c1" href="#s1-2">1-2 單位系統</a>
+    <a class="c2" href="#s2-1">2-1 運動物理量</a><a class="c2" href="#s2-2">2-2 等加速度</a><a class="c2" href="#s2-3">2-3 自由落體</a><a class="c2" href="#lab1">實驗 加速度量測</a>
+    <a class="c3" href="#s3-1">3-1 向量</a><a class="c3" href="#s3-2">3-2 圓周運動</a><a class="c3" href="#lab2">實驗 旋轉起重機</a>
+    <a href="#sum">公式總表</a>
+  </nav>
+</header>
+
+<!-- ========== 第一章 ========== -->
+<div class="chapter c1"><span class="num">01</span><h2>緒論</h2></div>
+
+<section class="sec" id="s1-1">
+  <h3><span class="id">1-1</span>物理學發展史</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>科學家</th><th>主要貢獻（考試關鍵字）</th></tr></thead>
+    <tbody>
+      <tr><td>亞里斯多德</td><td>認為重的物體落得比較快（<b>錯誤</b>，後來被伽利略推翻）</td></tr>
+      <tr><td>哥白尼</td><td>提出<b>地動說（日心說）</b></td></tr>
+      <tr><td>伽利略</td><td><b>近代科學之父</b>；重視實驗＋數學；斜面實驗、自由落體、慣性概念；改良望遠鏡觀測天體</td></tr>
+      <tr><td>克卜勒</td><td>整理第谷的觀測資料，提出<b>行星運動三大定律</b></td></tr>
+      <tr><td>牛頓</td><td><b>三大運動定律、萬有引力定律</b>；著《自然哲學的數學原理》（1687），建立古典力學</td></tr>
+      <tr><td>焦耳</td><td>熱功當量，證明熱是一種能量</td></tr>
+      <tr><td>法拉第</td><td><b>電磁感應</b>（發電機原理）</td></tr>
+      <tr><td>馬克士威</td><td>統整電磁理論，<b>預言電磁波</b>，指出光是電磁波</td></tr>
+      <tr><td>赫茲</td><td>用實驗<b>證實電磁波存在</b></td></tr>
+      <tr><td>侖琴</td><td>發現 <b>X 射線</b>（1895）</td></tr>
+      <tr><td>湯姆森</td><td>發現<b>電子</b>（1897）</td></tr>
+      <tr><td>居禮夫人</td><td>研究<b>放射性</b>，發現釙、鐳</td></tr>
+      <tr><td>普朗克</td><td>提出<b>量子論</b>（1900），近代物理的開端</td></tr>
+      <tr><td>愛因斯坦</td><td><b>光量子論解釋光電效應</b>（得諾貝爾獎）、<b>相對論</b></td></tr>
+      <tr><td>拉塞福</td><td>α 粒子散射實驗，提出<b>原子核模型</b></td></tr>
+      <tr><td>波耳</td><td>提出<b>氫原子模型</b>（電子在特定軌道上）</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>分類</th><th>內容</th></tr></thead>
+    <tbody>
+      <tr><td>古典物理</td><td>約 1900 年以前：力學、熱學、光學、電磁學</td></tr>
+      <tr><td>近代物理</td><td>約 1900 年以後：量子力學、相對論、原子與原子核物理</td></tr>
+      <tr><td>科學方法</td><td>觀察 → 提出問題 → 假說 → 實驗驗證 → 歸納成定律或理論</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>四大基本交互作用</th><th>強度排名</th><th>作用範圍</th></tr></thead>
+    <tbody>
+      <tr><td>強力（強作用）</td><td>1（最強）</td><td>極短，原子核內，把質子、中子綁在一起</td></tr>
+      <tr><td>電磁力</td><td>2</td><td>無限遠；摩擦力、彈力、化學鍵本質都是電磁力</td></tr>
+      <tr><td>弱力（弱作用）</td><td>3</td><td>極短，和原子核 β 衰變有關</td></tr>
+      <tr><td>重力</td><td>4（最弱）</td><td>無限遠；天體運動</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>重力是四種力裡<b>最弱</b>的，但作用範圍無限遠；強力最強但範圍最短。</p></div>
+</section>
+
+<section class="sec" id="s1-2">
+  <h3><span class="id">1-2</span>國際單位系統（SI）</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>SI 基本量（7 個）</th><th>單位</th><th>符號</th></tr></thead>
+    <tbody>
+      <tr><td>長度</td><td>公尺</td><td class="f">m</td></tr>
+      <tr><td>質量</td><td>公斤</td><td class="f">kg</td></tr>
+      <tr><td>時間</td><td>秒</td><td class="f">s</td></tr>
+      <tr><td>電流</td><td>安培</td><td class="f">A</td></tr>
+      <tr><td>溫度</td><td>克耳文</td><td class="f">K</td></tr>
+      <tr><td>物質的量</td><td>莫耳</td><td class="f">mol</td></tr>
+      <tr><td>光強度</td><td>燭光</td><td class="f">cd</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>導出量</th><th>公式</th><th>單位</th></tr></thead>
+    <tbody>
+      <tr><td>速度</td><td class="f"><ruby>v<rt>速度</rt></ruby> = <ruby>Δx<rt>位移</rt></ruby> / <ruby>Δt<rt>時間</rt></ruby></td><td class="f">m/s</td></tr>
+      <tr><td>加速度</td><td class="f"><ruby>a<rt>加速度</rt></ruby> = <ruby>Δv<rt>速度變化</rt></ruby> / <ruby>Δt<rt>時間</rt></ruby></td><td class="f">m/s²</td></tr>
+      <tr><td>力</td><td class="f"><ruby>F<rt>力</rt></ruby> = <ruby>m<rt>質量</rt></ruby> <ruby>a<rt>加速度</rt></ruby></td><td class="f">1 <ruby>N<rt>牛頓</rt></ruby> = 1 kg·m/s²</td></tr>
+      <tr><td>密度</td><td class="f"><ruby>ρ<rt>密度</rt></ruby> = <ruby>m<rt>質量</rt></ruby> / <ruby>V<rt>體積</rt></ruby></td><td class="f">kg/m³</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>基本單位的定義</th><th>現在的標準</th></tr></thead>
+    <tbody>
+      <tr><td>1 秒</td><td>銫-133 原子輻射振盪 9192631770 次的時間</td></tr>
+      <tr><td>1 公尺</td><td>光在真空中 1/299792458 秒走的距離</td></tr>
+      <tr><td>1 公斤</td><td>2019 年起改用<b>普朗克常數</b>定義（不再用國際公斤原器）</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>字首</th><th>符號</th><th>倍數</th><th>字首</th><th>符號</th><th>倍數</th></tr></thead>
+    <tbody>
+      <tr><td>兆 tera</td><td class="f">T</td><td class="f">10¹²</td><td>毫 milli</td><td class="f">m</td><td class="f">10⁻³</td></tr>
+      <tr><td>吉 giga</td><td class="f">G</td><td class="f">10⁹</td><td>微 micro</td><td class="f">μ</td><td class="f">10⁻⁶</td></tr>
+      <tr><td>百萬 mega</td><td class="f">M</td><td class="f">10⁶</td><td>奈 nano</td><td class="f">n</td><td class="f">10⁻⁹</td></tr>
+      <tr><td>千 kilo</td><td class="f">k</td><td class="f">10³</td><td>皮 pico</td><td class="f">p</td><td class="f">10⁻¹²</td></tr>
+      <tr><td></td><td></td><td></td><td>厘 centi</td><td class="f">c</td><td class="f">10⁻²</td></tr>
+    </tbody>
+  </table></div>
+  <div class="formulas">
+    <span class="f">科學記號：<ruby>a<rt>係數</rt></ruby> × 10^<ruby>n<rt>次方</rt></ruby>，1 ≤ a &lt; 10</span>
+    <span class="f">1 <ruby>km/h<rt>公里每小時</rt></ruby> = 1/3.6 <ruby>m/s<rt>公尺每秒</rt></ruby></span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>有效數字規則</th><th>例子</th><th>有效位數</th></tr></thead>
+    <tbody>
+      <tr><td>不是 0 的數字都有效</td><td class="f">35.7</td><td>3 位</td></tr>
+      <tr><td>夾在非零數字中間的 0 有效</td><td class="f">2005</td><td>4 位</td></tr>
+      <tr><td>小數點前面、最左邊的 0 不算</td><td class="f">0.0042</td><td>2 位</td></tr>
+      <tr><td>小數點後、最右邊的 0 有效</td><td class="f">3.50</td><td>3 位</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li>測量值 = 準確值 + <b>一位估計值</b>（最後一位是估計的）。</li>
+    <li>加減：答案的<b>小數位數</b>跟最少的那個一樣。乘除：答案的<b>有效位數</b>跟最少的那個一樣。</li>
+    <li>速度換算：km/h ÷ 3.6 = m/s；m/s × 3.6 = km/h。72 km/h = 20 m/s、36 km/h = 10 m/s。</li>
+  </ul>
+  <div class="note warn"><b class="tag">陷阱</b><p>公斤（kg）是基本單位，<b>公克不是</b>；牛頓（N）是導出單位。3.50 和 3.5 意義不同，前者精確到 0.01。</p></div>
+</section>
+
+<!-- ========== 第二章 ========== -->
+<div class="chapter c2"><span class="num">02</span><h2>直線運動</h2></div>
+
+<section class="sec" id="s2-1">
+  <h3><span class="id">2-1</span>與運動有關的物理量</h3>
+  <div class="formulas">
+    <span class="f"><ruby>Δx<rt>位移</rt></ruby> = <ruby>x₂<rt>末位置</rt></ruby> − <ruby>x₁<rt>初位置</rt></ruby></span>
+    <span class="f"><ruby>v̄<rt>平均速度</rt></ruby> = <ruby>Δx<rt>位移</rt></ruby> / <ruby>Δt<rt>經過時間</rt></ruby></span>
+    <span class="f">平均速率 = <ruby>s<rt>路徑長</rt></ruby> / <ruby>Δt<rt>經過時間</rt></ruby></span>
+    <span class="f">等速度：<ruby>x<rt>位置</rt></ruby> = <ruby>x₀<rt>初位置</rt></ruby> + <ruby>v<rt>速度</rt></ruby> <ruby>t<rt>時間</rt></ruby></span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>物理量</th><th>向量 / 純量</th><th>說明</th></tr></thead>
+    <tbody>
+      <tr><td>位置 x</td><td>向量</td><td>相對於原點的位置，有正負</td></tr>
+      <tr><td>位移 Δx</td><td>向量</td><td>末位置 − 初位置，只看起點和終點</td></tr>
+      <tr><td>路徑長（路程）s</td><td>純量</td><td>實際走過的長度，一定 ≥ 0</td></tr>
+      <tr><td>平均速度 v̄</td><td>向量</td><td>位移 ÷ 時間</td></tr>
+      <tr><td>平均速率</td><td>純量</td><td>路徑長 ÷ 時間</td></tr>
+      <tr><td>瞬時速度 v</td><td>向量</td><td>某一瞬間的速度＝ x–t 圖<b>切線斜率</b></td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li><b>|位移| ≤ 路徑長</b>，只有單方向直線前進時兩者相等。</li>
+    <li>繞一圈回到原點：位移 = 0、平均速度 = 0，但路徑長和平均速率不是 0。</li>
+    <li>等速度運動：x–t 圖是斜直線（斜率 = 速度），v–t 圖是水平線（<b>面積 = 位移</b>）。</li>
+  </ul>
+  <div class="note ex"><b class="tag">例題</b><p>從 x = 0 往東走 40 m，再往西走 10 m，共花 10 s。位移 = +30 m，路徑長 = 50 m；<span class="f"><ruby>v̄<rt>平均速度</rt></ruby> = 30 / 10</span> = 3 m/s（向東），平均速率 = 50 / 10 = 5 m/s。</p></div>
+</section>
+
+<section class="sec" id="s2-2">
+  <h3><span class="id">2-2</span>加速度與等加速度運動</h3>
+  <div class="formulas">
+    <span class="f"><ruby>a<rt>加速度</rt></ruby> = <ruby>Δv<rt>速度變化</rt></ruby> / <ruby>Δt<rt>經過時間</rt></ruby> = (<ruby>v<rt>末速度</rt></ruby> − <ruby>v₀<rt>初速度</rt></ruby>) / <ruby>t<rt>時間</rt></ruby></span>
+  </div>
+  <p style="margin:0"><b>等加速度四大公式</b>（缺哪個量，就選沒有它的那條）</p>
+  <div class="tbl"><table>
+    <thead><tr><th>公式</th><th>題目沒給</th></tr></thead>
+    <tbody>
+      <tr><td class="f">① <ruby>v<rt>末速度</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby> + <ruby>a<rt>加速度</rt></ruby> <ruby>t<rt>時間</rt></ruby></td><td>位移 Δx</td></tr>
+      <tr><td class="f">② <ruby>Δx<rt>位移</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby> <ruby>t<rt>時間</rt></ruby> + ½ <ruby>a<rt>加速度</rt></ruby> <ruby>t<rt>時間</rt></ruby>²</td><td>末速度 v</td></tr>
+      <tr><td class="f">③ <ruby>v<rt>末速度</rt></ruby>² = <ruby>v₀<rt>初速度</rt></ruby>² + 2 <ruby>a<rt>加速度</rt></ruby> <ruby>Δx<rt>位移</rt></ruby></td><td>時間 t</td></tr>
+      <tr><td class="f">④ <ruby>Δx<rt>位移</rt></ruby> = (<ruby>v₀<rt>初速度</rt></ruby> + <ruby>v<rt>末速度</rt></ruby>) / 2 × <ruby>t<rt>時間</rt></ruby></td><td>加速度 a</td></tr>
+    </tbody>
+  </table></div>
+  <div class="graphs" aria-label="等加速度運動圖形">
+    <div class="graph">
+      <svg viewBox="0 0 220 140" role="img" aria-label="x-t 圖為拋物線">
+        <path class="ax" d="M30 118 H205 M30 118 V12"/>
+        <path class="ln" d="M30 118 Q120 116 195 24"/>
+        <text x="196" y="134">t</text><text x="12" y="20">x</text>
+      </svg>
+      <div class="cap"><b>x–t 圖：拋物線</b>，切線斜率 = 瞬時速度</div>
+    </div>
+    <div class="graph">
+      <svg viewBox="0 0 220 140" role="img" aria-label="v-t 圖為斜直線，面積為位移">
+        <path class="area" d="M30 118 L30 88 L180 30 L180 118 Z"/>
+        <path class="ax" d="M30 118 H205 M30 118 V12"/>
+        <path class="ln" d="M30 88 L180 30"/>
+        <text x="196" y="134">t</text><text x="12" y="20">v</text>
+        <text x="84" y="104">面積=位移</text>
+      </svg>
+      <div class="cap"><b>v–t 圖：斜直線</b>，斜率 = 加速度，面積 = 位移</div>
+    </div>
+    <div class="graph">
+      <svg viewBox="0 0 220 140" role="img" aria-label="a-t 圖為水平線，面積為速度變化">
+        <path class="area" d="M30 118 L30 64 L180 64 L180 118 Z"/>
+        <path class="ax" d="M30 118 H205 M30 118 V12"/>
+        <path class="ln" d="M30 64 L180 64"/>
+        <text x="196" y="134">t</text><text x="12" y="20">a</text>
+        <text x="72" y="98">面積=速度變化</text>
+      </svg>
+      <div class="cap"><b>a–t 圖：水平線</b>，面積 = 速度變化 Δv</div>
+    </div>
+  </div>
+  <ul class="pts">
+    <li>加速度和速度<b>同方向 → 越來越快</b>；<b>反方向 → 越來越慢</b>（減速）。</li>
+    <li>加速度是負的，不一定代表變慢，要看它和速度方向是否相反。</li>
+    <li>由靜止開始等加速度：每一段相等時間的位移比 = <mark>1 : 3 : 5 : 7 …</mark>；累計位移比 = 1 : 4 : 9 : 16 …</li>
+  </ul>
+  <div class="note ex"><b class="tag">例題</b><p>汽車以 20 m/s 行駛，煞車加速度 −5 m/s²。停下時間：<span class="f"><ruby>t<rt>時間</rt></ruby> = (0 − 20) / (−5)</span> = 4 s；煞車距離：<span class="f">0 = 20² + 2(−5)<ruby>Δx<rt>位移</rt></ruby></span>，Δx = 40 m。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>代公式前先定好<b>正方向</b>，和它相反的速度、加速度都要帶負號。速度加倍，煞車距離變 <b>4 倍</b>（因為 Δx ∝ v₀²）。</p></div>
+</section>
+
+<section class="sec" id="s2-3">
+  <h3><span class="id">2-3</span>自由落體</h3>
+  <div class="formulas">
+    <span class="f"><ruby>v<rt>速度</rt></ruby> = <ruby>g<rt>重力加速度</rt></ruby> <ruby>t<rt>時間</rt></ruby></span>
+    <span class="f"><ruby>h<rt>落下高度</rt></ruby> = ½ <ruby>g<rt>重力加速度</rt></ruby> <ruby>t<rt>時間</rt></ruby>²</span>
+    <span class="f"><ruby>v<rt>速度</rt></ruby>² = 2 <ruby>g<rt>重力加速度</rt></ruby> <ruby>h<rt>落下高度</rt></ruby></span>
+    <span class="f"><ruby>g<rt>重力加速度</rt></ruby> ≈ 9.8 m/s²（常取 10）</span>
+  </div>
+  <ul class="pts">
+    <li>自由落體 = <b>初速 0</b>、加速度 g <b>向下</b>的等加速度運動。</li>
+    <li>忽略空氣阻力時，<b>落下快慢和質量無關</b>，羽毛和鐵球一起落地（伽利略推翻亞里斯多德）。</li>
+    <li>每秒速度增加約 10 m/s；第 1、2、3 秒內落下距離比 1 : 3 : 5。</li>
+  </ul>
+  <p style="margin:0"><b>延伸：鉛直上拋</b>（向上為正，加速度 = −g）</p>
+  <div class="formulas">
+    <span class="f"><ruby>v<rt>速度</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby> − <ruby>g<rt>重力加速度</rt></ruby> <ruby>t<rt>時間</rt></ruby></span>
+    <span class="f">上升時間 <ruby>t<rt>時間</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby> / <ruby>g<rt>重力加速度</rt></ruby></span>
+    <span class="f">最大高度 <ruby>H<rt>最大高度</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby>² / 2<ruby>g<rt>重力加速度</rt></ruby></span>
+  </div>
+  <ul class="pts">
+    <li>最高點：<b>速度 = 0，但加速度仍是 g</b>（向下）。</li>
+    <li>上升時間 = 下降時間；落回原處時速率 = 拋出速率，方向相反。</li>
+  </ul>
+  <div class="note ex"><b class="tag">例題</b><p>物體從 20 m 高處自由落下（g = 10）：<span class="f">20 = ½ × 10 × <ruby>t<rt>時間</rt></ruby>²</span>，t = 2 s；落地速度 <span class="f"><ruby>v<rt>速度</rt></ruby> = <ruby>g<rt>重力加速度</rt></ruby> <ruby>t<rt>時間</rt></ruby> = 10 × 2</span> = 20 m/s。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>高度變 4 倍，落地時間只變 <b>2 倍</b>（t ∝ √h）。</p></div>
+</section>
+
+<section class="sec lab" id="lab1">
+  <h3><span class="id">實驗</span>加速度的量測</h3>
+  <div class="formulas">
+    <span class="f"><ruby>T<rt>打點週期</rt></ruby> = 1 / <ruby>f<rt>頻率</rt></ruby></span>
+    <span class="f"><ruby>a<rt>加速度</rt></ruby> = (<ruby>s₂<rt>第二段位移</rt></ruby> − <ruby>s₁<rt>第一段位移</rt></ruby>) / <ruby>T<rt>每段時間</rt></ruby>²</span>
+  </div>
+  <ul class="pts">
+    <li>用<b>打點計時器</b>（或光電閘）記錄物體在相等時間間隔的位置。</li>
+    <li>點距<b>相等 → 等速度</b>；點距<b>越來越大 → 加速</b>；越來越小 → 減速。</li>
+    <li>等加速度運動中，連續相等時間內的<b>位移差是定值</b>：Δs = aT²。</li>
+    <li>也可以算出每段的平均速度，畫 v–t 圖，<b>斜率就是加速度</b>。</li>
+  </ul>
+  <div class="note ex"><b class="tag">例題</b><p>每段時間 0.1 s，連續兩段位移 2.0 cm、3.0 cm：<span class="f"><ruby>a<rt>加速度</rt></ruby> = (0.030 − 0.020) / 0.1²</span> = 1.0 m/s²。</p></div>
+</section>
+
+<!-- ========== 第三章 ========== -->
+<div class="chapter c3"><span class="num">03</span><h2>平面運動</h2></div>
+
+<section class="sec" id="s3-1">
+  <h3><span class="id">3-1</span>平面上的向量</h3>
+  <div class="formulas">
+    <span class="f"><ruby>Ax<rt>x分量</rt></ruby> = <ruby>A<rt>向量大小</rt></ruby> cos<ruby>θ<rt>夾角</rt></ruby></span>
+    <span class="f"><ruby>Ay<rt>y分量</rt></ruby> = <ruby>A<rt>向量大小</rt></ruby> sin<ruby>θ<rt>夾角</rt></ruby></span>
+    <span class="f"><ruby>A<rt>向量大小</rt></ruby> = √(<ruby>Ax<rt>x分量</rt></ruby>² + <ruby>Ay<rt>y分量</rt></ruby>²)</span>
+    <span class="f">tan<ruby>θ<rt>夾角</rt></ruby> = <ruby>Ay<rt>y分量</rt></ruby> / <ruby>Ax<rt>x分量</rt></ruby></span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>比較</th><th>純量</th><th>向量</th></tr></thead>
+    <tbody>
+      <tr><td>定義</td><td>只有大小</td><td>有大小，也有方向</td></tr>
+      <tr><td>例子</td><td>路徑長、速率、時間、質量、溫度、能量</td><td>位移、速度、加速度、力</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>向量相加</th><th>做法</th></tr></thead>
+    <tbody>
+      <tr><td>三角形法</td><td>A 的尾端接 B 的起點（<b>頭尾相接</b>），從 A 起點畫到 B 尾端就是合向量</td></tr>
+      <tr><td>平行四邊形法</td><td>兩向量起點放在一起，畫平行四邊形，<b>對角線</b>就是合向量</td></tr>
+      <tr><td>分量法</td><td>先拆成 x、y 分量，<b>x 加 x、y 加 y</b>，再合起來</td></tr>
+    </tbody>
+  </table></div>
+  <div class="formulas">
+    <span class="f">|<ruby>A<rt>向量A</rt></ruby> − <ruby>B<rt>向量B</rt></ruby>| ≤ <ruby>R<rt>合向量</rt></ruby> ≤ <ruby>A<rt>向量A</rt></ruby> + <ruby>B<rt>向量B</rt></ruby></span>
+    <span class="f">互相垂直：<ruby>R<rt>合向量</rt></ruby> = √(<ruby>A<rt>向量A</rt></ruby>² + <ruby>B<rt>向量B</rt></ruby>²)</span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>角度 θ</th><th>30°</th><th>37°</th><th>45°</th><th>53°</th><th>60°</th></tr></thead>
+    <tbody>
+      <tr><td>sin θ</td><td>1/2</td><td>0.6</td><td>√2/2</td><td>0.8</td><td>√3/2</td></tr>
+      <tr><td>cos θ</td><td>√3/2</td><td>0.8</td><td>√2/2</td><td>0.6</td><td>1/2</td></tr>
+      <tr><td>三邊比</td><td colspan="2">30°–60°–90° = 1 : √3 : 2；3 : 4 : 5（37°、53°）</td><td colspan="3">45°–45°–90° = 1 : 1 : √2</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li>兩向量同方向，合向量最大（A + B）；反方向，合向量最小（|A − B|）。</li>
+    <li>渡河問題：船的合速度 = 船速 + 水速（向量相加）。<b>船頭垂直河岸</b>時，渡河時間最短：<span class="f"><ruby>t<rt>時間</rt></ruby> = <ruby>d<rt>河寬</rt></ruby> / <ruby>v船<rt>船速</rt></ruby></span>。</li>
+  </ul>
+  <div class="note ex"><b class="tag">例題</b><p>向東走 3 m、再向北走 4 m：位移大小 <span class="f"><ruby>R<rt>合向量</rt></ruby> = √(3² + 4²)</span> = 5 m，方向東偏北 53°；路徑長 = 7 m。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>向量不能直接把大小相加（3 + 4 ≠ 5）；只有同方向時才能直接相加。</p></div>
+</section>
+
+<section class="sec" id="s3-2">
+  <h3><span class="id">3-2</span>等速圓周運動</h3>
+  <div class="formulas">
+    <span class="f"><ruby>f<rt>頻率</rt></ruby> = 1 / <ruby>T<rt>週期</rt></ruby></span>
+    <span class="f"><ruby>v<rt>速率</rt></ruby> = 2π<ruby>r<rt>半徑</rt></ruby> / <ruby>T<rt>週期</rt></ruby> = 2π<ruby>r<rt>半徑</rt></ruby><ruby>f<rt>頻率</rt></ruby></span>
+    <span class="f"><ruby>ω<rt>角速度</rt></ruby> = 2π / <ruby>T<rt>週期</rt></ruby> = 2π<ruby>f<rt>頻率</rt></ruby></span>
+    <span class="f"><ruby>v<rt>速率</rt></ruby> = <ruby>r<rt>半徑</rt></ruby> <ruby>ω<rt>角速度</rt></ruby></span>
+    <span class="f"><ruby>ac<rt>向心加速度</rt></ruby> = <ruby>v<rt>速率</rt></ruby>² / <ruby>r<rt>半徑</rt></ruby> = <ruby>r<rt>半徑</rt></ruby><ruby>ω<rt>角速度</rt></ruby>² = 4π²<ruby>r<rt>半徑</rt></ruby> / <ruby>T<rt>週期</rt></ruby>²</span>
+    <span class="f"><ruby>Fc<rt>向心力</rt></ruby> = <ruby>m<rt>質量</rt></ruby> <ruby>v<rt>速率</rt></ruby>² / <ruby>r<rt>半徑</rt></ruby></span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>物理量</th><th>單位</th><th>說明</th></tr></thead>
+    <tbody>
+      <tr><td>週期 T</td><td class="f">s</td><td>轉一圈所需的時間</td></tr>
+      <tr><td>頻率 f</td><td class="f">Hz（次/秒）</td><td>每秒轉幾圈；轉速 rpm ÷ 60 = f</td></tr>
+      <tr><td>速率 v</td><td class="f">m/s</td><td><b>大小不變</b>，方向沿<b>切線</b>一直改變</td></tr>
+      <tr><td>角速度 ω</td><td class="f">rad/s</td><td>每秒轉過的角度；一圈 = 360° = 2π rad</td></tr>
+      <tr><td>向心加速度 ac</td><td class="f">m/s²</td><td>大小不變，方向永遠<b>指向圓心</b></td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li>等速圓周運動「等速」指的是<b>速率</b>不變；速度方向一直在變，所以<b>有加速度</b>，不是等速度運動。</li>
+    <li>速度方向（切線）和向心加速度方向（指向圓心）<b>互相垂直</b>。</li>
+    <li>繩子突然斷掉，物體沿<b>切線方向</b>飛出去。</li>
+    <li>同一個轉盤上各點的 T、f、ω 相同；半徑越大，v 越大。</li>
+  </ul>
+  <div class="note ex"><b class="tag">例題</b><p>半徑 2 m、週期 π 秒：<span class="f"><ruby>v<rt>速率</rt></ruby> = 2π × 2 / π</span> = 4 m/s，<span class="f"><ruby>ac<rt>向心加速度</rt></ruby> = 4² / 2</span> = 8 m/s²。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>半徑固定時，速率變 2 倍，向心加速度變 <b>4 倍</b>（ac ∝ v²）。轉速單位 rpm 是「每分鐘」轉數，要先除以 60。</p></div>
+</section>
+
+<section class="sec lab" id="lab2">
+  <h3><span class="id">實驗</span>旋轉起重機</h3>
+  <div class="formulas">
+    <span class="f">向心力 <ruby>Fc<rt>向心力</rt></ruby> = 懸掛重物的重量 <ruby>M<rt>重物質量</rt></ruby><ruby>g<rt>重力加速度</rt></ruby></span>
+    <span class="f"><ruby>M<rt>重物質量</rt></ruby><ruby>g<rt>重力加速度</rt></ruby> = <ruby>m<rt>旋轉物質量</rt></ruby> × 4π²<ruby>r<rt>旋轉半徑</rt></ruby> / <ruby>T<rt>週期</rt></ruby>²</span>
+  </div>
+  <ul class="pts">
+    <li>手握管子讓上方小物體做水平圓周運動，繩子穿過管子下方掛重物；轉速適當時重物剛好被「吊起」而不上下移動。</li>
+    <li>此時<b>繩子張力 = 重物重量</b>，這個張力提供旋轉物體的<b>向心力</b>。</li>
+    <li>重物越重（向心力越大）→ 要轉得越快（週期越短）才能吊住。</li>
+    <li>半徑越大、向心力不變 → 週期要變長。量週期時通常測 10 圈再除以 10，減少誤差。</li>
+  </ul>
+</section>
+
+<!-- ========== 總表 ========== -->
+<section class="sec" id="sum">
+  <h3><span class="id">總表</span>考前 1 分鐘公式總複習</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>主題</th><th>公式</th></tr></thead>
+    <tbody>
+      <tr><td>位移</td><td class="f"><ruby>Δx<rt>位移</rt></ruby> = <ruby>x₂<rt>末位置</rt></ruby> − <ruby>x₁<rt>初位置</rt></ruby></td></tr>
+      <tr><td>平均速度</td><td class="f"><ruby>v̄<rt>平均速度</rt></ruby> = <ruby>Δx<rt>位移</rt></ruby> / <ruby>Δt<rt>時間</rt></ruby></td></tr>
+      <tr><td>加速度</td><td class="f"><ruby>a<rt>加速度</rt></ruby> = (<ruby>v<rt>末速度</rt></ruby> − <ruby>v₀<rt>初速度</rt></ruby>) / <ruby>t<rt>時間</rt></ruby></td></tr>
+      <tr><td>等加速度 ①</td><td class="f"><ruby>v<rt>末速度</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby> + <ruby>a<rt>加速度</rt></ruby><ruby>t<rt>時間</rt></ruby></td></tr>
+      <tr><td>等加速度 ②</td><td class="f"><ruby>Δx<rt>位移</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby><ruby>t<rt>時間</rt></ruby> + ½<ruby>a<rt>加速度</rt></ruby><ruby>t<rt>時間</rt></ruby>²</td></tr>
+      <tr><td>等加速度 ③</td><td class="f"><ruby>v<rt>末速度</rt></ruby>² = <ruby>v₀<rt>初速度</rt></ruby>² + 2<ruby>a<rt>加速度</rt></ruby><ruby>Δx<rt>位移</rt></ruby></td></tr>
+      <tr><td>等加速度 ④</td><td class="f"><ruby>Δx<rt>位移</rt></ruby> = (<ruby>v₀<rt>初速度</rt></ruby> + <ruby>v<rt>末速度</rt></ruby>) / 2 × <ruby>t<rt>時間</rt></ruby></td></tr>
+      <tr><td>自由落體</td><td class="f"><ruby>v<rt>速度</rt></ruby> = <ruby>g<rt>重力加速度</rt></ruby><ruby>t<rt>時間</rt></ruby>、<ruby>h<rt>高度</rt></ruby> = ½<ruby>g<rt>重力加速度</rt></ruby><ruby>t<rt>時間</rt></ruby>²、<ruby>v<rt>速度</rt></ruby>² = 2<ruby>g<rt>重力加速度</rt></ruby><ruby>h<rt>高度</rt></ruby></td></tr>
+      <tr><td>向量分量</td><td class="f"><ruby>Ax<rt>x分量</rt></ruby> = <ruby>A<rt>大小</rt></ruby>cos<ruby>θ<rt>夾角</rt></ruby>、<ruby>Ay<rt>y分量</rt></ruby> = <ruby>A<rt>大小</rt></ruby>sin<ruby>θ<rt>夾角</rt></ruby></td></tr>
+      <tr><td>圓周運動</td><td class="f"><ruby>v<rt>速率</rt></ruby> = 2π<ruby>r<rt>半徑</rt></ruby>/<ruby>T<rt>週期</rt></ruby> = <ruby>r<rt>半徑</rt></ruby><ruby>ω<rt>角速度</rt></ruby>、<ruby>f<rt>頻率</rt></ruby> = 1/<ruby>T<rt>週期</rt></ruby></td></tr>
+      <tr><td>向心加速度</td><td class="f"><ruby>ac<rt>向心加速度</rt></ruby> = <ruby>v<rt>速率</rt></ruby>²/<ruby>r<rt>半徑</rt></ruby> = <ruby>r<rt>半徑</rt></ruby><ruby>ω<rt>角速度</rt></ruby>²</td></tr>
+      <tr><td>單位換算</td><td class="f">1 km/h = 1/3.6 m/s；1 N = 1 kg·m/s²</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<footer>依課本目錄 1-1～3-2 與實驗小棧整理。數值以一般高職課本慣用值為準，若與你的課本有出入，以課本和老師上課為主。</footer>
+</div>
+
+</body>
+</html>

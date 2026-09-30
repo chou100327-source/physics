@@ -117,6 +117,12 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   th, td { padding: 7px 7px; }
   td:first-child { white-space: normal; }
 }
+
+.toprow { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.theme-btn { font: inherit; font-size: 14px; font-weight: 700; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 5px 14px; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; }
+.theme-btn:hover { border-color: var(--muted); }
+.theme-btn:focus-visible { outline: 2px solid var(--muted); outline-offset: 2px; }
+@media print { .theme-btn { display: none !important; } }
 </style>
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}[hidden]{display:none!important}</style>
 </head>
@@ -125,7 +131,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 <div class="wrap">
 
 <header class="top">
-  <div class="eyebrow">高職一年級 · 物理 · 第一次段考</div>
+  <div class="toprow"><div class="eyebrow">高職一年級 · 物理 · 第一次段考</div><button type="button" class="theme-btn" id="themeBtn">切換深色模式</button></div>
   <h1>第一章 緒論 ＋ 第二章 直線運動 ＋ 第三章 平面運動 重點整理</h1>
   <p>先看每節的公式卡，再看表格；公式裡每個代號上方都標了中文名稱。紅色框是常考陷阱，虛線框是例題。</p>
   <nav class="toc" aria-label="目錄">
@@ -485,5 +491,28 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 <footer>依課本目錄 1-1～3-2 與實驗小棧整理。數值以一般高職課本慣用值為準，若與你的課本有出入，以課本和老師上課為主。</footer>
 </div>
 
+
+<script>
+(function () {
+  var KEY = "study-theme", root = document.documentElement, btn = document.getElementById("themeBtn");
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  try { var saved = localStorage.getItem(KEY); if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved); } catch (e) {}
+  function current() { var t = root.getAttribute("data-theme"); return t || (mq && mq.matches ? "dark" : "light"); }
+  function label() {
+    var dark = current() === "dark";
+    btn.innerHTML = dark ? "<span aria-hidden=\"true\">☀</span> 切換淺色模式" : "<span aria-hidden=\"true\">☾</span> 切換深色模式";
+    btn.setAttribute("aria-label", dark ? "切換成淺色模式" : "切換成深色模式");
+  }
+  btn.addEventListener("click", function () {
+    var next = current() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+    label();
+  });
+  if (mq && mq.addEventListener) mq.addEventListener("change", label);
+  new MutationObserver(label).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+  label();
+})();
+</script>
 </body>
 </html>

@@ -85,11 +85,13 @@ td:first-child { font-weight: 700; white-space: nowrap; }
 tr:last-child td { border-bottom: none; }
 
 .f { font-family: var(--mono); font-weight: 500; }
-ruby { ruby-position: over; ruby-align: center; margin-inline: 1px; }
-rt { font-family: var(--sans); font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0; line-height: 1.2; }
-td .f, td.f { line-height: 2.3; }
+.v { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; line-height: 1.2; margin-inline: 2px; }
+.v .zh { font-family: var(--sans); font-size: 11px; font-weight: 700; color: var(--accent); white-space: nowrap; }
+.v .s { white-space: nowrap; }
+.v .u { font-family: var(--sans); font-size: 11px; font-weight: 500; color: var(--muted); white-space: nowrap; }
+td .f, td.f { line-height: 2; }
 .formulas { display: flex; flex-wrap: wrap; gap: 10px; }
-.formulas .f { background: var(--accent-soft); color: var(--fg); border-radius: 8px; padding: 12px 12px 6px; font-size: 16px; line-height: 2.1; }
+.formulas .f { background: var(--accent-soft); color: var(--fg); border-radius: 8px; padding: 8px 12px; font-size: 16px; line-height: 2; }
 mark { background: var(--hl); color: inherit; padding: 0 3px; border-radius: 3px; }
 
 .note { border-radius: 10px; padding: 10px 14px; font-size: 15px; display: grid; gap: 4px; }
@@ -133,7 +135,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 <header class="top">
   <div class="toprow"><div class="eyebrow">高職一年級 · 物理 · 第一次段考</div><button type="button" class="theme-btn" id="themeBtn">切換深色模式</button></div>
   <h1>第一章 緒論 ＋ 第二章 直線運動 ＋ 第三章 平面運動 重點整理</h1>
-  <p>先看每節的公式卡，再看表格；公式裡每個代號上方都標了中文名稱。紅色框是常考陷阱，虛線框是例題。</p>
+  <p>先看每節的公式卡，再看表格；公式裡每個代號上方是中文名稱、下方是單位。紅色框是常考陷阱，虛線框是例題。</p>
   <nav class="toc" aria-label="目錄">
     <a class="c1" href="#s1-1">1-1 發展史</a><a class="c1" href="#s1-2">1-2 單位系統</a>
     <a class="c2" href="#s2-1">2-1 運動物理量</a><a class="c2" href="#s2-2">2-2 等加速度</a><a class="c2" href="#s2-3">2-3 自由落體</a><a class="c2" href="#lab1">實驗 加速度量測</a>
@@ -205,10 +207,10 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   <div class="tbl"><table>
     <thead><tr><th>導出量</th><th>公式</th><th>單位</th></tr></thead>
     <tbody>
-      <tr><td>速度</td><td class="f"><ruby>v<rt>速度</rt></ruby> = <ruby>Δx<rt>位移</rt></ruby> / <ruby>Δt<rt>時間</rt></ruby></td><td class="f">m/s</td></tr>
-      <tr><td>加速度</td><td class="f"><ruby>a<rt>加速度</rt></ruby> = <ruby>Δv<rt>速度變化</rt></ruby> / <ruby>Δt<rt>時間</rt></ruby></td><td class="f">m/s²</td></tr>
-      <tr><td>力</td><td class="f"><ruby>F<rt>力</rt></ruby> = <ruby>m<rt>質量</rt></ruby> <ruby>a<rt>加速度</rt></ruby></td><td class="f">1 <ruby>N<rt>牛頓</rt></ruby> = 1 kg·m/s²</td></tr>
-      <tr><td>密度</td><td class="f"><ruby>ρ<rt>密度</rt></ruby> = <ruby>m<rt>質量</rt></ruby> / <ruby>V<rt>體積</rt></ruby></td><td class="f">kg/m³</td></tr>
+      <tr><td>速度</td><td class="f"><span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span> = <span class="v"><span class="zh">位移</span><span class="s">Δx</span><span class="u">m</span></span> / <span class="v"><span class="zh">時間</span><span class="s">Δt</span><span class="u">s</span></span></td><td class="f">m/s</td></tr>
+      <tr><td>加速度</td><td class="f"><span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> = <span class="v"><span class="zh">速度變化</span><span class="s">Δv</span><span class="u">m/s</span></span> / <span class="v"><span class="zh">時間</span><span class="s">Δt</span><span class="u">s</span></span></td><td class="f">m/s²</td></tr>
+      <tr><td>力</td><td class="f"><span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span></td><td class="f">1 <span class="v"><span class="zh">牛頓</span><span class="s">N</span><span class="u">&nbsp;</span></span> = 1 kg·m/s²</td></tr>
+      <tr><td>密度</td><td class="f"><span class="v"><span class="zh">密度</span><span class="s">ρ</span><span class="u">kg/m³</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> / <span class="v"><span class="zh">體積</span><span class="s">V</span><span class="u">m³</span></span></td><td class="f">kg/m³</td></tr>
     </tbody>
   </table></div>
   <div class="tbl"><table>
@@ -230,8 +232,8 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
     </tbody>
   </table></div>
   <div class="formulas">
-    <span class="f">科學記號：<ruby>a<rt>係數</rt></ruby> × 10^<ruby>n<rt>次方</rt></ruby>，1 ≤ a &lt; 10</span>
-    <span class="f">1 <ruby>km/h<rt>公里每小時</rt></ruby> = 1/3.6 <ruby>m/s<rt>公尺每秒</rt></ruby></span>
+    <span class="f">科學記號：<span class="v"><span class="zh">係數</span><span class="s">a</span><span class="u">&nbsp;</span></span> × 10^<span class="v"><span class="zh">次方</span><span class="s">n</span><span class="u">&nbsp;</span></span>，1 ≤ a &lt; 10</span>
+    <span class="f">1 <span class="v"><span class="zh">公里每小時</span><span class="s">km/h</span><span class="u">&nbsp;</span></span> = 1/3.6 <span class="v"><span class="zh">公尺每秒</span><span class="s">m/s</span><span class="u">&nbsp;</span></span></span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>有效數字規則</th><th>例子</th><th>有效位數</th></tr></thead>
@@ -256,10 +258,10 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 <section class="sec" id="s2-1">
   <h3><span class="id">2-1</span>與運動有關的物理量</h3>
   <div class="formulas">
-    <span class="f"><ruby>Δx<rt>位移</rt></ruby> = <ruby>x₂<rt>末位置</rt></ruby> − <ruby>x₁<rt>初位置</rt></ruby></span>
-    <span class="f"><ruby>v̄<rt>平均速度</rt></ruby> = <ruby>Δx<rt>位移</rt></ruby> / <ruby>Δt<rt>經過時間</rt></ruby></span>
-    <span class="f">平均速率 = <ruby>s<rt>路徑長</rt></ruby> / <ruby>Δt<rt>經過時間</rt></ruby></span>
-    <span class="f">等速度：<ruby>x<rt>位置</rt></ruby> = <ruby>x₀<rt>初位置</rt></ruby> + <ruby>v<rt>速度</rt></ruby> <ruby>t<rt>時間</rt></ruby></span>
+    <span class="f"><span class="v"><span class="zh">位移</span><span class="s">Δx</span><span class="u">m</span></span> = <span class="v"><span class="zh">末位置</span><span class="s">x₂</span><span class="u">m</span></span> − <span class="v"><span class="zh">初位置</span><span class="s">x₁</span><span class="u">m</span></span></span>
+    <span class="f"><span class="v"><span class="zh">平均速度</span><span class="s">v̄</span><span class="u">m/s</span></span> = <span class="v"><span class="zh">位移</span><span class="s">Δx</span><span class="u">m</span></span> / <span class="v"><span class="zh">經過時間</span><span class="s">Δt</span><span class="u">s</span></span></span>
+    <span class="f">平均速率 = <span class="v"><span class="zh">路徑長</span><span class="s">s</span><span class="u">m</span></span> / <span class="v"><span class="zh">經過時間</span><span class="s">Δt</span><span class="u">s</span></span></span>
+    <span class="f">等速度：<span class="v"><span class="zh">位置</span><span class="s">x</span><span class="u">m</span></span> = <span class="v"><span class="zh">初位置</span><span class="s">x₀</span><span class="u">m</span></span> + <span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span> <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>物理量</th><th>向量 / 純量</th><th>說明</th></tr></thead>
@@ -277,22 +279,22 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
     <li>繞一圈回到原點：位移 = 0、平均速度 = 0，但路徑長和平均速率不是 0。</li>
     <li>等速度運動：x–t 圖是斜直線（斜率 = 速度），v–t 圖是水平線（<b>面積 = 位移</b>）。</li>
   </ul>
-  <div class="note ex"><b class="tag">例題</b><p>從 x = 0 往東走 40 m，再往西走 10 m，共花 10 s。位移 = +30 m，路徑長 = 50 m；<span class="f"><ruby>v̄<rt>平均速度</rt></ruby> = 30 / 10</span> = 3 m/s（向東），平均速率 = 50 / 10 = 5 m/s。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>從 x = 0 往東走 40 m，再往西走 10 m，共花 10 s。位移 = +30 m，路徑長 = 50 m；<span class="f"><span class="v"><span class="zh">平均速度</span><span class="s">v̄</span><span class="u">m/s</span></span> = 30 / 10</span> = 3 m/s（向東），平均速率 = 50 / 10 = 5 m/s。</p></div>
 </section>
 
 <section class="sec" id="s2-2">
   <h3><span class="id">2-2</span>加速度與等加速度運動</h3>
   <div class="formulas">
-    <span class="f"><ruby>a<rt>加速度</rt></ruby> = <ruby>Δv<rt>速度變化</rt></ruby> / <ruby>Δt<rt>經過時間</rt></ruby> = (<ruby>v<rt>末速度</rt></ruby> − <ruby>v₀<rt>初速度</rt></ruby>) / <ruby>t<rt>時間</rt></ruby></span>
+    <span class="f"><span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> = <span class="v"><span class="zh">速度變化</span><span class="s">Δv</span><span class="u">m/s</span></span> / <span class="v"><span class="zh">經過時間</span><span class="s">Δt</span><span class="u">s</span></span> = (<span class="v"><span class="zh">末速度</span><span class="s">v</span><span class="u">m/s</span></span> − <span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span>) / <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></span>
   </div>
   <p style="margin:0"><b>等加速度四大公式</b>（缺哪個量，就選沒有它的那條）</p>
   <div class="tbl"><table>
     <thead><tr><th>公式</th><th>題目沒給</th></tr></thead>
     <tbody>
-      <tr><td class="f">① <ruby>v<rt>末速度</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby> + <ruby>a<rt>加速度</rt></ruby> <ruby>t<rt>時間</rt></ruby></td><td>位移 Δx</td></tr>
-      <tr><td class="f">② <ruby>Δx<rt>位移</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby> <ruby>t<rt>時間</rt></ruby> + ½ <ruby>a<rt>加速度</rt></ruby> <ruby>t<rt>時間</rt></ruby>²</td><td>末速度 v</td></tr>
-      <tr><td class="f">③ <ruby>v<rt>末速度</rt></ruby>² = <ruby>v₀<rt>初速度</rt></ruby>² + 2 <ruby>a<rt>加速度</rt></ruby> <ruby>Δx<rt>位移</rt></ruby></td><td>時間 t</td></tr>
-      <tr><td class="f">④ <ruby>Δx<rt>位移</rt></ruby> = (<ruby>v₀<rt>初速度</rt></ruby> + <ruby>v<rt>末速度</rt></ruby>) / 2 × <ruby>t<rt>時間</rt></ruby></td><td>加速度 a</td></tr>
+      <tr><td class="f">① <span class="v"><span class="zh">末速度</span><span class="s">v</span><span class="u">m/s</span></span> = <span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span> + <span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></td><td>位移 Δx</td></tr>
+      <tr><td class="f">② <span class="v"><span class="zh">位移</span><span class="s">Δx</span><span class="u">m</span></span> = <span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span> <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span> + ½ <span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span>²</td><td>末速度 v</td></tr>
+      <tr><td class="f">③ <span class="v"><span class="zh">末速度</span><span class="s">v</span><span class="u">m/s</span></span>² = <span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span>² + 2 <span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">位移</span><span class="s">Δx</span><span class="u">m</span></span></td><td>時間 t</td></tr>
+      <tr><td class="f">④ <span class="v"><span class="zh">位移</span><span class="s">Δx</span><span class="u">m</span></span> = (<span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span> + <span class="v"><span class="zh">末速度</span><span class="s">v</span><span class="u">m/s</span></span>) / 2 × <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></td><td>加速度 a</td></tr>
     </tbody>
   </table></div>
   <div class="graphs" aria-label="等加速度運動圖形">
@@ -330,17 +332,17 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
     <li>加速度是負的，不一定代表變慢，要看它和速度方向是否相反。</li>
     <li>由靜止開始等加速度：每一段相等時間的位移比 = <mark>1 : 3 : 5 : 7 …</mark>；累計位移比 = 1 : 4 : 9 : 16 …</li>
   </ul>
-  <div class="note ex"><b class="tag">例題</b><p>汽車以 20 m/s 行駛，煞車加速度 −5 m/s²。停下時間：<span class="f"><ruby>t<rt>時間</rt></ruby> = (0 − 20) / (−5)</span> = 4 s；煞車距離：<span class="f">0 = 20² + 2(−5)<ruby>Δx<rt>位移</rt></ruby></span>，Δx = 40 m。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>汽車以 20 m/s 行駛，煞車加速度 −5 m/s²。停下時間：<span class="f"><span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span> = (0 − 20) / (−5)</span> = 4 s；煞車距離：<span class="f">0 = 20² + 2(−5)<span class="v"><span class="zh">位移</span><span class="s">Δx</span><span class="u">m</span></span></span>，Δx = 40 m。</p></div>
   <div class="note warn"><b class="tag">陷阱</b><p>代公式前先定好<b>正方向</b>，和它相反的速度、加速度都要帶負號。速度加倍，煞車距離變 <b>4 倍</b>（因為 Δx ∝ v₀²）。</p></div>
 </section>
 
 <section class="sec" id="s2-3">
   <h3><span class="id">2-3</span>自由落體</h3>
   <div class="formulas">
-    <span class="f"><ruby>v<rt>速度</rt></ruby> = <ruby>g<rt>重力加速度</rt></ruby> <ruby>t<rt>時間</rt></ruby></span>
-    <span class="f"><ruby>h<rt>落下高度</rt></ruby> = ½ <ruby>g<rt>重力加速度</rt></ruby> <ruby>t<rt>時間</rt></ruby>²</span>
-    <span class="f"><ruby>v<rt>速度</rt></ruby>² = 2 <ruby>g<rt>重力加速度</rt></ruby> <ruby>h<rt>落下高度</rt></ruby></span>
-    <span class="f"><ruby>g<rt>重力加速度</rt></ruby> ≈ 9.8 m/s²（常取 10）</span>
+    <span class="f"><span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span> = <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></span>
+    <span class="f"><span class="v"><span class="zh">落下高度</span><span class="s">h</span><span class="u">m</span></span> = ½ <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span>²</span>
+    <span class="f"><span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span>² = 2 <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">落下高度</span><span class="s">h</span><span class="u">m</span></span></span>
+    <span class="f"><span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> ≈ 9.8 m/s²（常取 10）</span>
   </div>
   <ul class="pts">
     <li>自由落體 = <b>初速 0</b>、加速度 g <b>向下</b>的等加速度運動。</li>
@@ -349,23 +351,23 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   </ul>
   <p style="margin:0"><b>延伸：鉛直上拋</b>（向上為正，加速度 = −g）</p>
   <div class="formulas">
-    <span class="f"><ruby>v<rt>速度</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby> − <ruby>g<rt>重力加速度</rt></ruby> <ruby>t<rt>時間</rt></ruby></span>
-    <span class="f">上升時間 <ruby>t<rt>時間</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby> / <ruby>g<rt>重力加速度</rt></ruby></span>
-    <span class="f">最大高度 <ruby>H<rt>最大高度</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby>² / 2<ruby>g<rt>重力加速度</rt></ruby></span>
+    <span class="f"><span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span> = <span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span> − <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></span>
+    <span class="f">上升時間 <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span> = <span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span> / <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span></span>
+    <span class="f">最大高度 <span class="v"><span class="zh">最大高度</span><span class="s">H</span><span class="u">m</span></span> = <span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span>² / 2<span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span></span>
   </div>
   <ul class="pts">
     <li>最高點：<b>速度 = 0，但加速度仍是 g</b>（向下）。</li>
     <li>上升時間 = 下降時間；落回原處時速率 = 拋出速率，方向相反。</li>
   </ul>
-  <div class="note ex"><b class="tag">例題</b><p>物體從 20 m 高處自由落下（g = 10）：<span class="f">20 = ½ × 10 × <ruby>t<rt>時間</rt></ruby>²</span>，t = 2 s；落地速度 <span class="f"><ruby>v<rt>速度</rt></ruby> = <ruby>g<rt>重力加速度</rt></ruby> <ruby>t<rt>時間</rt></ruby> = 10 × 2</span> = 20 m/s。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>物體從 20 m 高處自由落下（g = 10）：<span class="f">20 = ½ × 10 × <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span>²</span>，t = 2 s；落地速度 <span class="f"><span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span> = <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span> = 10 × 2</span> = 20 m/s。</p></div>
   <div class="note warn"><b class="tag">陷阱</b><p>高度變 4 倍，落地時間只變 <b>2 倍</b>（t ∝ √h）。</p></div>
 </section>
 
 <section class="sec lab" id="lab1">
   <h3><span class="id">實驗</span>加速度的量測</h3>
   <div class="formulas">
-    <span class="f"><ruby>T<rt>打點週期</rt></ruby> = 1 / <ruby>f<rt>頻率</rt></ruby></span>
-    <span class="f"><ruby>a<rt>加速度</rt></ruby> = (<ruby>s₂<rt>第二段位移</rt></ruby> − <ruby>s₁<rt>第一段位移</rt></ruby>) / <ruby>T<rt>每段時間</rt></ruby>²</span>
+    <span class="f"><span class="v"><span class="zh">打點週期</span><span class="s">T</span><span class="u">s</span></span> = 1 / <span class="v"><span class="zh">頻率</span><span class="s">f</span><span class="u">Hz</span></span></span>
+    <span class="f"><span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> = (<span class="v"><span class="zh">第二段位移</span><span class="s">s₂</span><span class="u">m</span></span> − <span class="v"><span class="zh">第一段位移</span><span class="s">s₁</span><span class="u">m</span></span>) / <span class="v"><span class="zh">每段時間</span><span class="s">T</span><span class="u">s</span></span>²</span>
   </div>
   <ul class="pts">
     <li>用<b>打點計時器</b>（或光電閘）記錄物體在相等時間間隔的位置。</li>
@@ -373,7 +375,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
     <li>等加速度運動中，連續相等時間內的<b>位移差是定值</b>：Δs = aT²。</li>
     <li>也可以算出每段的平均速度，畫 v–t 圖，<b>斜率就是加速度</b>。</li>
   </ul>
-  <div class="note ex"><b class="tag">例題</b><p>每段時間 0.1 s，連續兩段位移 2.0 cm、3.0 cm：<span class="f"><ruby>a<rt>加速度</rt></ruby> = (0.030 − 0.020) / 0.1²</span> = 1.0 m/s²。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>每段時間 0.1 s，連續兩段位移 2.0 cm、3.0 cm：<span class="f"><span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> = (0.030 − 0.020) / 0.1²</span> = 1.0 m/s²。</p></div>
 </section>
 
 <!-- ========== 第三章 ========== -->
@@ -382,10 +384,10 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 <section class="sec" id="s3-1">
   <h3><span class="id">3-1</span>平面上的向量</h3>
   <div class="formulas">
-    <span class="f"><ruby>Ax<rt>x分量</rt></ruby> = <ruby>A<rt>向量大小</rt></ruby> cos<ruby>θ<rt>夾角</rt></ruby></span>
-    <span class="f"><ruby>Ay<rt>y分量</rt></ruby> = <ruby>A<rt>向量大小</rt></ruby> sin<ruby>θ<rt>夾角</rt></ruby></span>
-    <span class="f"><ruby>A<rt>向量大小</rt></ruby> = √(<ruby>Ax<rt>x分量</rt></ruby>² + <ruby>Ay<rt>y分量</rt></ruby>²)</span>
-    <span class="f">tan<ruby>θ<rt>夾角</rt></ruby> = <ruby>Ay<rt>y分量</rt></ruby> / <ruby>Ax<rt>x分量</rt></ruby></span>
+    <span class="f"><span class="v"><span class="zh">x分量</span><span class="s">Ax</span><span class="u">&nbsp;</span></span> = <span class="v"><span class="zh">向量大小</span><span class="s">A</span><span class="u">&nbsp;</span></span> cos<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span></span>
+    <span class="f"><span class="v"><span class="zh">y分量</span><span class="s">Ay</span><span class="u">&nbsp;</span></span> = <span class="v"><span class="zh">向量大小</span><span class="s">A</span><span class="u">&nbsp;</span></span> sin<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span></span>
+    <span class="f"><span class="v"><span class="zh">向量大小</span><span class="s">A</span><span class="u">&nbsp;</span></span> = √(<span class="v"><span class="zh">x分量</span><span class="s">Ax</span><span class="u">&nbsp;</span></span>² + <span class="v"><span class="zh">y分量</span><span class="s">Ay</span><span class="u">&nbsp;</span></span>²)</span>
+    <span class="f">tan<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span> = <span class="v"><span class="zh">y分量</span><span class="s">Ay</span><span class="u">&nbsp;</span></span> / <span class="v"><span class="zh">x分量</span><span class="s">Ax</span><span class="u">&nbsp;</span></span></span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>比較</th><th>純量</th><th>向量</th></tr></thead>
@@ -403,8 +405,8 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
     </tbody>
   </table></div>
   <div class="formulas">
-    <span class="f">|<ruby>A<rt>向量A</rt></ruby> − <ruby>B<rt>向量B</rt></ruby>| ≤ <ruby>R<rt>合向量</rt></ruby> ≤ <ruby>A<rt>向量A</rt></ruby> + <ruby>B<rt>向量B</rt></ruby></span>
-    <span class="f">互相垂直：<ruby>R<rt>合向量</rt></ruby> = √(<ruby>A<rt>向量A</rt></ruby>² + <ruby>B<rt>向量B</rt></ruby>²)</span>
+    <span class="f">|<span class="v"><span class="zh">向量A</span><span class="s">A</span><span class="u">&nbsp;</span></span> − <span class="v"><span class="zh">向量B</span><span class="s">B</span><span class="u">&nbsp;</span></span>| ≤ <span class="v"><span class="zh">合向量</span><span class="s">R</span><span class="u">&nbsp;</span></span> ≤ <span class="v"><span class="zh">向量A</span><span class="s">A</span><span class="u">&nbsp;</span></span> + <span class="v"><span class="zh">向量B</span><span class="s">B</span><span class="u">&nbsp;</span></span></span>
+    <span class="f">互相垂直：<span class="v"><span class="zh">合向量</span><span class="s">R</span><span class="u">&nbsp;</span></span> = √(<span class="v"><span class="zh">向量A</span><span class="s">A</span><span class="u">&nbsp;</span></span>² + <span class="v"><span class="zh">向量B</span><span class="s">B</span><span class="u">&nbsp;</span></span>²)</span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>角度 θ</th><th>30°</th><th>37°</th><th>45°</th><th>53°</th><th>60°</th></tr></thead>
@@ -416,21 +418,21 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   </table></div>
   <ul class="pts">
     <li>兩向量同方向，合向量最大（A + B）；反方向，合向量最小（|A − B|）。</li>
-    <li>渡河問題：船的合速度 = 船速 + 水速（向量相加）。<b>船頭垂直河岸</b>時，渡河時間最短：<span class="f"><ruby>t<rt>時間</rt></ruby> = <ruby>d<rt>河寬</rt></ruby> / <ruby>v船<rt>船速</rt></ruby></span>。</li>
+    <li>渡河問題：船的合速度 = 船速 + 水速（向量相加）。<b>船頭垂直河岸</b>時，渡河時間最短：<span class="f"><span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span> = <span class="v"><span class="zh">河寬</span><span class="s">d</span><span class="u">m</span></span> / <span class="v"><span class="zh">船速</span><span class="s">v船</span><span class="u">m/s</span></span></span>。</li>
   </ul>
-  <div class="note ex"><b class="tag">例題</b><p>向東走 3 m、再向北走 4 m：位移大小 <span class="f"><ruby>R<rt>合向量</rt></ruby> = √(3² + 4²)</span> = 5 m，方向東偏北 53°；路徑長 = 7 m。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>向東走 3 m、再向北走 4 m：位移大小 <span class="f"><span class="v"><span class="zh">合向量</span><span class="s">R</span><span class="u">&nbsp;</span></span> = √(3² + 4²)</span> = 5 m，方向東偏北 53°；路徑長 = 7 m。</p></div>
   <div class="note warn"><b class="tag">陷阱</b><p>向量不能直接把大小相加（3 + 4 ≠ 5）；只有同方向時才能直接相加。</p></div>
 </section>
 
 <section class="sec" id="s3-2">
   <h3><span class="id">3-2</span>等速圓周運動</h3>
   <div class="formulas">
-    <span class="f"><ruby>f<rt>頻率</rt></ruby> = 1 / <ruby>T<rt>週期</rt></ruby></span>
-    <span class="f"><ruby>v<rt>速率</rt></ruby> = 2π<ruby>r<rt>半徑</rt></ruby> / <ruby>T<rt>週期</rt></ruby> = 2π<ruby>r<rt>半徑</rt></ruby><ruby>f<rt>頻率</rt></ruby></span>
-    <span class="f"><ruby>ω<rt>角速度</rt></ruby> = 2π / <ruby>T<rt>週期</rt></ruby> = 2π<ruby>f<rt>頻率</rt></ruby></span>
-    <span class="f"><ruby>v<rt>速率</rt></ruby> = <ruby>r<rt>半徑</rt></ruby> <ruby>ω<rt>角速度</rt></ruby></span>
-    <span class="f"><ruby>ac<rt>向心加速度</rt></ruby> = <ruby>v<rt>速率</rt></ruby>² / <ruby>r<rt>半徑</rt></ruby> = <ruby>r<rt>半徑</rt></ruby><ruby>ω<rt>角速度</rt></ruby>² = 4π²<ruby>r<rt>半徑</rt></ruby> / <ruby>T<rt>週期</rt></ruby>²</span>
-    <span class="f"><ruby>Fc<rt>向心力</rt></ruby> = <ruby>m<rt>質量</rt></ruby> <ruby>v<rt>速率</rt></ruby>² / <ruby>r<rt>半徑</rt></ruby></span>
+    <span class="f"><span class="v"><span class="zh">頻率</span><span class="s">f</span><span class="u">Hz</span></span> = 1 / <span class="v"><span class="zh">週期</span><span class="s">T</span><span class="u">s</span></span></span>
+    <span class="f"><span class="v"><span class="zh">速率</span><span class="s">v</span><span class="u">m/s</span></span> = 2π<span class="v"><span class="zh">半徑</span><span class="s">r</span><span class="u">m</span></span> / <span class="v"><span class="zh">週期</span><span class="s">T</span><span class="u">s</span></span> = 2π<span class="v"><span class="zh">半徑</span><span class="s">r</span><span class="u">m</span></span><span class="v"><span class="zh">頻率</span><span class="s">f</span><span class="u">Hz</span></span></span>
+    <span class="f"><span class="v"><span class="zh">角速度</span><span class="s">ω</span><span class="u">rad/s</span></span> = 2π / <span class="v"><span class="zh">週期</span><span class="s">T</span><span class="u">s</span></span> = 2π<span class="v"><span class="zh">頻率</span><span class="s">f</span><span class="u">Hz</span></span></span>
+    <span class="f"><span class="v"><span class="zh">速率</span><span class="s">v</span><span class="u">m/s</span></span> = <span class="v"><span class="zh">半徑</span><span class="s">r</span><span class="u">m</span></span> <span class="v"><span class="zh">角速度</span><span class="s">ω</span><span class="u">rad/s</span></span></span>
+    <span class="f"><span class="v"><span class="zh">向心加速度</span><span class="s">ac</span><span class="u">m/s²</span></span> = <span class="v"><span class="zh">速率</span><span class="s">v</span><span class="u">m/s</span></span>² / <span class="v"><span class="zh">半徑</span><span class="s">r</span><span class="u">m</span></span> = <span class="v"><span class="zh">半徑</span><span class="s">r</span><span class="u">m</span></span><span class="v"><span class="zh">角速度</span><span class="s">ω</span><span class="u">rad/s</span></span>² = 4π²<span class="v"><span class="zh">半徑</span><span class="s">r</span><span class="u">m</span></span> / <span class="v"><span class="zh">週期</span><span class="s">T</span><span class="u">s</span></span>²</span>
+    <span class="f"><span class="v"><span class="zh">向心力</span><span class="s">Fc</span><span class="u">N</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">速率</span><span class="s">v</span><span class="u">m/s</span></span>² / <span class="v"><span class="zh">半徑</span><span class="s">r</span><span class="u">m</span></span></span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>物理量</th><th>單位</th><th>說明</th></tr></thead>
@@ -448,15 +450,15 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
     <li>繩子突然斷掉，物體沿<b>切線方向</b>飛出去。</li>
     <li>同一個轉盤上各點的 T、f、ω 相同；半徑越大，v 越大。</li>
   </ul>
-  <div class="note ex"><b class="tag">例題</b><p>半徑 2 m、週期 π 秒：<span class="f"><ruby>v<rt>速率</rt></ruby> = 2π × 2 / π</span> = 4 m/s，<span class="f"><ruby>ac<rt>向心加速度</rt></ruby> = 4² / 2</span> = 8 m/s²。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>半徑 2 m、週期 π 秒：<span class="f"><span class="v"><span class="zh">速率</span><span class="s">v</span><span class="u">m/s</span></span> = 2π × 2 / π</span> = 4 m/s，<span class="f"><span class="v"><span class="zh">向心加速度</span><span class="s">ac</span><span class="u">m/s²</span></span> = 4² / 2</span> = 8 m/s²。</p></div>
   <div class="note warn"><b class="tag">陷阱</b><p>半徑固定時，速率變 2 倍，向心加速度變 <b>4 倍</b>（ac ∝ v²）。轉速單位 rpm 是「每分鐘」轉數，要先除以 60。</p></div>
 </section>
 
 <section class="sec lab" id="lab2">
   <h3><span class="id">實驗</span>旋轉起重機</h3>
   <div class="formulas">
-    <span class="f">向心力 <ruby>Fc<rt>向心力</rt></ruby> = 懸掛重物的重量 <ruby>M<rt>重物質量</rt></ruby><ruby>g<rt>重力加速度</rt></ruby></span>
-    <span class="f"><ruby>M<rt>重物質量</rt></ruby><ruby>g<rt>重力加速度</rt></ruby> = <ruby>m<rt>旋轉物質量</rt></ruby> × 4π²<ruby>r<rt>旋轉半徑</rt></ruby> / <ruby>T<rt>週期</rt></ruby>²</span>
+    <span class="f">向心力 <span class="v"><span class="zh">向心力</span><span class="s">Fc</span><span class="u">N</span></span> = 懸掛重物的重量 <span class="v"><span class="zh">重物質量</span><span class="s">M</span><span class="u">kg</span></span><span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span></span>
+    <span class="f"><span class="v"><span class="zh">重物質量</span><span class="s">M</span><span class="u">kg</span></span><span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> = <span class="v"><span class="zh">旋轉物質量</span><span class="s">m</span><span class="u">kg</span></span> × 4π²<span class="v"><span class="zh">旋轉半徑</span><span class="s">r</span><span class="u">m</span></span> / <span class="v"><span class="zh">週期</span><span class="s">T</span><span class="u">s</span></span>²</span>
   </div>
   <ul class="pts">
     <li>手握管子讓上方小物體做水平圓周運動，繩子穿過管子下方掛重物；轉速適當時重物剛好被「吊起」而不上下移動。</li>
@@ -472,17 +474,17 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   <div class="tbl"><table>
     <thead><tr><th>主題</th><th>公式</th></tr></thead>
     <tbody>
-      <tr><td>位移</td><td class="f"><ruby>Δx<rt>位移</rt></ruby> = <ruby>x₂<rt>末位置</rt></ruby> − <ruby>x₁<rt>初位置</rt></ruby></td></tr>
-      <tr><td>平均速度</td><td class="f"><ruby>v̄<rt>平均速度</rt></ruby> = <ruby>Δx<rt>位移</rt></ruby> / <ruby>Δt<rt>時間</rt></ruby></td></tr>
-      <tr><td>加速度</td><td class="f"><ruby>a<rt>加速度</rt></ruby> = (<ruby>v<rt>末速度</rt></ruby> − <ruby>v₀<rt>初速度</rt></ruby>) / <ruby>t<rt>時間</rt></ruby></td></tr>
-      <tr><td>等加速度 ①</td><td class="f"><ruby>v<rt>末速度</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby> + <ruby>a<rt>加速度</rt></ruby><ruby>t<rt>時間</rt></ruby></td></tr>
-      <tr><td>等加速度 ②</td><td class="f"><ruby>Δx<rt>位移</rt></ruby> = <ruby>v₀<rt>初速度</rt></ruby><ruby>t<rt>時間</rt></ruby> + ½<ruby>a<rt>加速度</rt></ruby><ruby>t<rt>時間</rt></ruby>²</td></tr>
-      <tr><td>等加速度 ③</td><td class="f"><ruby>v<rt>末速度</rt></ruby>² = <ruby>v₀<rt>初速度</rt></ruby>² + 2<ruby>a<rt>加速度</rt></ruby><ruby>Δx<rt>位移</rt></ruby></td></tr>
-      <tr><td>等加速度 ④</td><td class="f"><ruby>Δx<rt>位移</rt></ruby> = (<ruby>v₀<rt>初速度</rt></ruby> + <ruby>v<rt>末速度</rt></ruby>) / 2 × <ruby>t<rt>時間</rt></ruby></td></tr>
-      <tr><td>自由落體</td><td class="f"><ruby>v<rt>速度</rt></ruby> = <ruby>g<rt>重力加速度</rt></ruby><ruby>t<rt>時間</rt></ruby>、<ruby>h<rt>高度</rt></ruby> = ½<ruby>g<rt>重力加速度</rt></ruby><ruby>t<rt>時間</rt></ruby>²、<ruby>v<rt>速度</rt></ruby>² = 2<ruby>g<rt>重力加速度</rt></ruby><ruby>h<rt>高度</rt></ruby></td></tr>
-      <tr><td>向量分量</td><td class="f"><ruby>Ax<rt>x分量</rt></ruby> = <ruby>A<rt>大小</rt></ruby>cos<ruby>θ<rt>夾角</rt></ruby>、<ruby>Ay<rt>y分量</rt></ruby> = <ruby>A<rt>大小</rt></ruby>sin<ruby>θ<rt>夾角</rt></ruby></td></tr>
-      <tr><td>圓周運動</td><td class="f"><ruby>v<rt>速率</rt></ruby> = 2π<ruby>r<rt>半徑</rt></ruby>/<ruby>T<rt>週期</rt></ruby> = <ruby>r<rt>半徑</rt></ruby><ruby>ω<rt>角速度</rt></ruby>、<ruby>f<rt>頻率</rt></ruby> = 1/<ruby>T<rt>週期</rt></ruby></td></tr>
-      <tr><td>向心加速度</td><td class="f"><ruby>ac<rt>向心加速度</rt></ruby> = <ruby>v<rt>速率</rt></ruby>²/<ruby>r<rt>半徑</rt></ruby> = <ruby>r<rt>半徑</rt></ruby><ruby>ω<rt>角速度</rt></ruby>²</td></tr>
+      <tr><td>位移</td><td class="f"><span class="v"><span class="zh">位移</span><span class="s">Δx</span><span class="u">m</span></span> = <span class="v"><span class="zh">末位置</span><span class="s">x₂</span><span class="u">m</span></span> − <span class="v"><span class="zh">初位置</span><span class="s">x₁</span><span class="u">m</span></span></td></tr>
+      <tr><td>平均速度</td><td class="f"><span class="v"><span class="zh">平均速度</span><span class="s">v̄</span><span class="u">m/s</span></span> = <span class="v"><span class="zh">位移</span><span class="s">Δx</span><span class="u">m</span></span> / <span class="v"><span class="zh">時間</span><span class="s">Δt</span><span class="u">s</span></span></td></tr>
+      <tr><td>加速度</td><td class="f"><span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> = (<span class="v"><span class="zh">末速度</span><span class="s">v</span><span class="u">m/s</span></span> − <span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span>) / <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></td></tr>
+      <tr><td>等加速度 ①</td><td class="f"><span class="v"><span class="zh">末速度</span><span class="s">v</span><span class="u">m/s</span></span> = <span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span> + <span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span><span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></td></tr>
+      <tr><td>等加速度 ②</td><td class="f"><span class="v"><span class="zh">位移</span><span class="s">Δx</span><span class="u">m</span></span> = <span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span><span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span> + ½<span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span><span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span>²</td></tr>
+      <tr><td>等加速度 ③</td><td class="f"><span class="v"><span class="zh">末速度</span><span class="s">v</span><span class="u">m/s</span></span>² = <span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span>² + 2<span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span><span class="v"><span class="zh">位移</span><span class="s">Δx</span><span class="u">m</span></span></td></tr>
+      <tr><td>等加速度 ④</td><td class="f"><span class="v"><span class="zh">位移</span><span class="s">Δx</span><span class="u">m</span></span> = (<span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span> + <span class="v"><span class="zh">末速度</span><span class="s">v</span><span class="u">m/s</span></span>) / 2 × <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></td></tr>
+      <tr><td>自由落體</td><td class="f"><span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span> = <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span><span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span>、<span class="v"><span class="zh">高度</span><span class="s">h</span><span class="u">m</span></span> = ½<span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span><span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span>²、<span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span>² = 2<span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span><span class="v"><span class="zh">高度</span><span class="s">h</span><span class="u">m</span></span></td></tr>
+      <tr><td>向量分量</td><td class="f"><span class="v"><span class="zh">x分量</span><span class="s">Ax</span><span class="u">&nbsp;</span></span> = <span class="v"><span class="zh">大小</span><span class="s">A</span><span class="u">&nbsp;</span></span>cos<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span>、<span class="v"><span class="zh">y分量</span><span class="s">Ay</span><span class="u">&nbsp;</span></span> = <span class="v"><span class="zh">大小</span><span class="s">A</span><span class="u">&nbsp;</span></span>sin<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span></td></tr>
+      <tr><td>圓周運動</td><td class="f"><span class="v"><span class="zh">速率</span><span class="s">v</span><span class="u">m/s</span></span> = 2π<span class="v"><span class="zh">半徑</span><span class="s">r</span><span class="u">m</span></span>/<span class="v"><span class="zh">週期</span><span class="s">T</span><span class="u">s</span></span> = <span class="v"><span class="zh">半徑</span><span class="s">r</span><span class="u">m</span></span><span class="v"><span class="zh">角速度</span><span class="s">ω</span><span class="u">rad/s</span></span>、<span class="v"><span class="zh">頻率</span><span class="s">f</span><span class="u">Hz</span></span> = 1/<span class="v"><span class="zh">週期</span><span class="s">T</span><span class="u">s</span></span></td></tr>
+      <tr><td>向心加速度</td><td class="f"><span class="v"><span class="zh">向心加速度</span><span class="s">ac</span><span class="u">m/s²</span></span> = <span class="v"><span class="zh">速率</span><span class="s">v</span><span class="u">m/s</span></span>²/<span class="v"><span class="zh">半徑</span><span class="s">r</span><span class="u">m</span></span> = <span class="v"><span class="zh">半徑</span><span class="s">r</span><span class="u">m</span></span><span class="v"><span class="zh">角速度</span><span class="s">ω</span><span class="u">rad/s</span></span>²</td></tr>
       <tr><td>單位換算</td><td class="f">1 km/h = 1/3.6 m/s；1 N = 1 kg·m/s²</td></tr>
     </tbody>
   </table></div>

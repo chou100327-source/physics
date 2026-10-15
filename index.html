@@ -127,6 +127,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 .utag { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
 .sumtbl td { vertical-align: middle; }
 .sumtbl td:nth-child(2) { white-space: nowrap; font-weight: 700; }
+body { touch-action: manipulation; }
 </style>
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}[hidden]{display:none!important}</style>
 </head>
@@ -550,6 +551,31 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   if (mq && mq.addEventListener) mq.addEventListener("change", label);
   new MutationObserver(label).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
   label();
+})();
+</script>
+<script>
+/* toc-jump：在空白背景連點兩下，回到最上面的目錄 */
+(function () {
+  function isBackground(t) {
+    if (!t || t.nodeType !== 1) return false;
+    return t === document.documentElement || t === document.body || (t.classList && t.classList.contains("wrap"));
+  }
+  function go() {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    try { var sel = window.getSelection && window.getSelection(); if (sel) sel.removeAllRanges(); } catch (e) {}
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  }
+  document.addEventListener("dblclick", function (e) { if (isBackground(e.target)) go(); });
+  var last = 0, lx = 0, ly = 0, sx = 0, sy = 0;
+  document.addEventListener("touchstart", function (e) {
+    var t = e.touches[0]; sx = t.clientX; sy = t.clientY;
+  }, { passive: true });
+  document.addEventListener("touchend", function (e) {
+    var t = e.changedTouches[0], now = Date.now();
+    if (!isBackground(e.target) || Math.abs(t.clientX - sx) > 10 || Math.abs(t.clientY - sy) > 10) { last = 0; return; }
+    if (now - last < 350 && Math.abs(t.clientX - lx) < 30 && Math.abs(t.clientY - ly) < 30) { last = 0; go(); }
+    else { last = now; lx = t.clientX; ly = t.clientY; }
+  }, { passive: true });
 })();
 </script>
 </body>

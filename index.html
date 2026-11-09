@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>物理 Ch1–Ch3 重點</title>
+<title>物理上學期重點整理</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
@@ -128,6 +128,21 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 .sumtbl td { vertical-align: middle; }
 .sumtbl td:nth-child(2) { white-space: nowrap; font-weight: 700; }
 body { touch-action: manipulation; }
+:root { --ch4:#b04fb0; --ch5:#1d8fb5; --ch6:#a8801a; --ch7:#2f7fd0; --ch8:#d0572f; }
+:root[data-theme="dark"] { --ch4:#e08be0; --ch5:#5fcbe8; --ch6:#e6c25a; --ch7:#7fb4f5; --ch8:#f59a73; }
+nav.toc a.c4 { border-left: 4px solid var(--ch4); } nav.toc a.c5 { border-left: 4px solid var(--ch5); } nav.toc a.c6 { border-left: 4px solid var(--ch6); } nav.toc a.c7 { border-left: 4px solid var(--ch7); } nav.toc a.c8 { border-left: 4px solid var(--ch8); }
+.chapter.c4 .num { color: var(--ch4); } .chapter.c5 .num { color: var(--ch5); } .chapter.c6 .num { color: var(--ch6); } .chapter.c7 .num { color: var(--ch7); } .chapter.c8 .num { color: var(--ch8); }
+h4.sub { margin: 6px 0 0; font-size: 16px; font-weight: 700; color: var(--accent); }
+.note.know { background: var(--accent-soft); }
+.note.know b.tag { color: var(--accent); }
+.note.one { border-left: 4px solid var(--accent); background: var(--bg); border-radius: 0 10px 10px 0; }
+.note.one b.tag { color: var(--accent); }
+.vec { position: relative; display: inline-block; font-style: normal; }
+.vec::before { content: "→"; position: absolute; left: 50%; top: -0.72em; transform: translateX(-50%) scale(.72); line-height: 1; pointer-events: none; }
+.graphs.one { grid-template-columns: minmax(0, 340px); justify-content: center; }
+.graphs.one svg text { font-size: 11px; }
+.graph svg .w { stroke: var(--fg); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
 </style>
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}[hidden]{display:none!important}</style>
 </head>
@@ -136,13 +151,17 @@ body { touch-action: manipulation; }
 <div class="wrap">
 
 <header class="top">
-  <div class="toprow"><div class="eyebrow">高職一年級 · 物理 · 第一次段考</div><button type="button" class="theme-btn" id="themeBtn">切換深色模式</button></div>
-  <h1>第一章 緒論 ＋ 第二章 直線運動 ＋ 第三章 平面運動 重點整理</h1>
-  <p>先看每節的公式卡，再看表格；公式裡每個代號上方是中文名稱、下方是單位。紅色框是常考陷阱，虛線框是例題。</p>
+  <div class="toprow"><div class="eyebrow">高職一年級 · 物理</div><button type="button" class="theme-btn" id="themeBtn">切換深色模式</button></div>
+  <h1>物理上學期重點整理</h1>
   <nav class="toc" aria-label="目錄">
     <a class="c1" href="#s1-1">1-1 發展史</a><a class="c1" href="#s1-2">1-2 單位系統</a>
     <a class="c2" href="#s2-1">2-1 運動物理量</a><a class="c2" href="#s2-2">2-2 等加速度</a><a class="c2" href="#s2-3">2-3 自由落體</a><a class="c2" href="#lab1">實驗 加速度量測</a>
     <a class="c3" href="#s3-1">3-1 向量</a><a class="c3" href="#s3-2">3-2 圓周運動</a><a class="c3" href="#lab2">實驗 旋轉起重機</a>
+    <a class="c4" href="#s4-1">4-1 力的意義與量度</a><a class="c4" href="#s4-2">4-2 牛頓三定律與平衡</a><a class="c4" href="#s4-3">4-3 萬有引力</a><a class="c4" href="#s4-4">4-4 摩擦力</a><a class="c4" href="#lab3">實驗 馬鈴薯向上爬</a>
+    <a class="c5" href="#s5-1">5-1 功與功率</a><a class="c5" href="#s5-2">5-2 力學能</a><a class="c5" href="#s5-3">5-3 能量轉換</a><a class="c5" href="#s5-4">5-4 核能</a><a class="c5" href="#lab4">實驗 彈力飛車</a>
+    <a class="c6" href="#s6-1">6-1 動量與衝量</a><a class="c6" href="#s6-2">6-2 動量守恆</a><a class="c6" href="#lab5">實驗 水杯取球</a>
+    <a class="c7" href="#s7-1">7-1 液體壓力與浮力</a><a class="c7" href="#s7-2">7-2 帕斯卡原理</a><a class="c7" href="#s7-3">7-3 大氣壓力</a><a class="c7" href="#lab6">實驗 漂浮馬鈴薯</a>
+    <a class="c8" href="#s8-1">8-1 溫度與熱平衡</a><a class="c8" href="#s8-2">8-2 比熱與熱容量</a><a class="c8" href="#s8-3">8-3 三態變化與潛熱</a><a class="c8" href="#s8-4">8-4 熱膨脹</a><a class="c8" href="#lab7">實驗 氣球溫度計</a>
     <a href="#sum">公式總表</a>
   </nav>
 </header>
@@ -403,7 +422,7 @@ body { touch-action: manipulation; }
 <section class="sec" id="s3-1">
   <h3><span class="id">3-1</span>平面上的向量</h3>
   <div class="formulas">
-    <span class="f">向量合成：a⃗ + b⃗ = c⃗</span>
+    <span class="f">向量合成：<span class="vec">a</span> + <span class="vec">b</span> = <span class="vec">c</span></span>
     <span class="f"><span class="v"><span class="zh">x分量</span><span class="s">Ax</span><span class="u">&nbsp;</span></span> = <span class="v"><span class="zh">向量大小</span><span class="s">A</span><span class="u">&nbsp;</span></span> cos<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span></span>
     <span class="f"><span class="v"><span class="zh">y分量</span><span class="s">Ay</span><span class="u">&nbsp;</span></span> = <span class="v"><span class="zh">向量大小</span><span class="s">A</span><span class="u">&nbsp;</span></span> sin<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span></span>
     <span class="f"><span class="v"><span class="zh">向量大小</span><span class="s">A</span><span class="u">&nbsp;</span></span> = √(<span class="v"><span class="zh">x分量</span><span class="s">Ax</span><span class="u">&nbsp;</span></span>² + <span class="v"><span class="zh">y分量</span><span class="s">Ay</span><span class="u">&nbsp;</span></span>²)</span>
@@ -419,8 +438,8 @@ body { touch-action: manipulation; }
   <div class="tbl"><table>
     <thead><tr><th>向量合成方法</th><th>做法</th></tr></thead>
     <tbody>
-      <tr><td>三角形法</td><td>a⃗ 的尾端接 b⃗ 的起點（<b>頭尾相接</b>），從 a⃗ 起點畫到 b⃗ 尾端就是合向量 c⃗</td></tr>
-      <tr><td>平行四邊形法</td><td>a⃗、b⃗ 起點放在一起，畫平行四邊形，<b>對角線</b>就是合向量 c⃗</td></tr>
+      <tr><td>三角形法</td><td><span class="vec">a</span> 的尾端接 <span class="vec">b</span> 的起點（<b>頭尾相接</b>），從 <span class="vec">a</span> 起點畫到 <span class="vec">b</span> 尾端就是合向量 <span class="vec">c</span></td></tr>
+      <tr><td>平行四邊形法</td><td><span class="vec">a</span>、<span class="vec">b</span> 起點放在一起，畫平行四邊形，<b>對角線</b>就是合向量 <span class="vec">c</span></td></tr>
       <tr><td>分量法</td><td>先拆成 x、y 分量，<b>x 加 x、y 加 y</b>，再合起來</td></tr>
     </tbody>
   </table></div>
@@ -495,6 +514,305 @@ body { touch-action: manipulation; }
   </ul>
 </section>
 
+<!-- ========== 第4章 ========== -->
+<div class="chapter c4"><span class="num">04</span><h2>力與運動</h2></div>
+
+<section class="sec" id="s4-1">
+  <h3><span class="id">4-1</span>力的意義及其量度</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p><b>力</b>是物體與物體之間的<b>交互作用</b>。力能讓物體<b>改變運動狀態</b>（變快、變慢、轉彎、由靜止變運動），也能讓物體<b>發生形變</b>（壓扁、拉長）。力有大小也有方向，是<b>向量</b>，單位是牛頓（N），<b>1 N = 1 kg·m/s²</b>。</p></div>
+  <h4 class="sub">一、力的種類</h4>
+  <div class="tbl"><table><thead><tr><th>分類</th><th>說明</th><th>例子</th></tr></thead><tbody><tr><td>接觸力</td><td>兩物體要互相接觸才有</td><td>摩擦力、正向力、張力、彈力</td></tr><tr><td>超距力</td><td>不用接觸也能作用</td><td>重力、靜電力、磁力</td></tr><tr><td>四種基本交互作用</td><td>自然界所有力都來自這四種</td><td>重力、電磁力、強力（原子核內）、弱力（衰變）</td></tr></tbody></table></div>
+  <h4 class="sub">二、力的量度：虎克定律</h4>
+  <p>彈簧被拉長或壓縮 x 時，彈簧的回復力和形變量成正比（在彈性限度內）。彈簧秤就是用這個原理量力。</p>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> = <span class="v"><span class="zh">彈力常數</span><span class="s">k</span><span class="u">N/m</span></span> <span class="v"><span class="zh">形變量</span><span class="s">x</span><span class="u">m</span></span></span></div>
+  <ul class="pts"><li>彈力常數 k 越大，彈簧越「硬」。</li><li>F–x 圖是通過原點的直線，<b>斜率 = k</b>。</li><li>超過彈性限度，彈簧無法恢復原長，公式就不成立。</li></ul>
+  <h4 class="sub">三、重力與重量</h4>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">重量</span><span class="s">W</span><span class="u">N</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span></span></div>
+  <p><b>質量</b>是物體所含物質的多寡，到哪裡都一樣（kg）；<b>重量</b>是地球對物體的引力（N），在月球上只有地球的約 1／6。</p>
+  <h4 class="sub">四、力的合成與分解</h4>
+  <div class="tbl"><table><thead><tr><th>情形</th><th>合力大小</th></tr></thead><tbody><tr><td>同方向的兩力</td><td>F₁ + F₂</td></tr><tr><td>反方向的兩力</td><td>｜F₁ − F₂｜</td></tr><tr><td>互相垂直的兩力</td><td>√(F₁² + F₂²)</td></tr><tr><td>夾角任意</td><td>大小介於 ｜F₁ − F₂｜ 與 F₁ + F₂ 之間</td></tr></tbody></table></div>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">x分量</span><span class="s">Fx</span><span class="u">N</span></span> = <span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> cos<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span></span><span class="f"><span class="v"><span class="zh">y分量</span><span class="s">Fy</span><span class="u">N</span></span> = <span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> sin<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span></span></div>
+  <p>分解：把斜向的力拆成水平（x）和垂直（y）兩個互相垂直的分量，就能分開計算。</p>
+  <div class="note ex"><b class="tag">例題：虎克定律</b><p>彈簧 k = 200 N/m，掛上 2 kg 的物體（g = 10）：重量 = 2 × 10 = 20 N，伸長量 x = <span class="frac"><span class="num">20</span><span class="den">200</span></span> = <b>0.1 m</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：力的合成</b><p>3 N 與 4 N 互相垂直：合力 = √(9 + 16) = <b>5 N</b>。5 N 與 8 N 兩個力，合力最小 3 N、最大 13 N。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>質量不會因地點改變，重量會。力的合成要用<b>向量</b>加法，不能直接把大小相加（除非同方向）。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>力是向量，單位 N；F = kx；W = mg；垂直兩力合成用畢氏定理。</p></div>
+</section>
+
+<section class="sec" id="s4-2">
+  <h3><span class="id">4-2</span>牛頓運動定律與平衡</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p>牛頓三大運動定律是整個力學的基礎：<b>第一定律</b>說「沒有力會怎樣」、<b>第二定律</b>說「有力會怎樣」、<b>第三定律</b>說「力一定成對出現」。</p></div>
+  <h4 class="sub">一、第一定律（慣性定律）</h4>
+  <p>物體不受力或所受<b>合力為零</b>時，靜止的繼續靜止，運動的繼續沿<b>直線等速度</b>運動。物體「抗拒運動狀態改變」的性質叫<b>慣性</b>，質量越大慣性越大。例如公車急煞，乘客往前傾。</p>
+  <h4 class="sub">二、第二定律（F = ma）</h4>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">合力</span><span class="s">F合</span><span class="u">N</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span></span></div>
+  <ul class="pts"><li>加速度方向和<b>合力方向</b>相同。</li><li>同樣的力，質量越大，加速度越小；同樣的質量，力越大，加速度越大。</li><li>合力為零 ⇒ 加速度為零 ⇒ 靜止或等速度（和第一定律一致）。</li></ul>
+  <h4 class="sub">三、第三定律（作用力與反作用力）</h4>
+  <ul class="pts"><li>A 推 B 的力，和 B 推 A 的力，<b>大小相等、方向相反、在同一直線上</b>。</li><li>兩個力<b>作用在不同的物體上</b>，所以<b>不能互相抵消</b>。</li><li>同時產生、同時消失、種類相同（都是接觸力，或都是重力…）。</li></ul>
+  <h4 class="sub">四、靜力平衡與力矩</h4>
+  <div class="formulas"><span class="f">平衡條件：<span class="v"><span class="zh">合力</span><span class="s">F合</span><span class="u">N</span></span> = 0（Σ Fx = 0，Σ Fy = 0）</span></div>
+  <p>物體靜止（或等速度）時，所有力向量相加為零。三力平衡時，任兩力的合力必與第三力等大反向。若要轉動也平衡，還需要<b>力矩</b>合為零：</p>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">力矩</span><span class="s">τ</span><span class="u">N·m</span></span> = <span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> × <span class="v"><span class="zh">力臂</span><span class="s">d</span><span class="u">m</span></span></span><span class="f">轉動平衡：順時針力矩 = 逆時針力矩</span></div>
+  <p>力臂 d 是支點到<b>力的作用線的垂直距離</b>。</p>
+  <div class="note ex"><b class="tag">例題：F = ma</b><p>質量 2 kg 的物體，向右受 10 N、向左受 4 N：合力 = 6 N 向右，a = <span class="frac"><span class="num">6</span><span class="den">2</span></span> = <b>3 m/s²</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：電梯中的視重</b><p>60 kg 的人站在電梯內磅秤上（g = 10）：電梯<b>加速向上</b> 2 m/s²：N = m(g + a) = 60 × 12 = <b>720 N</b>（變重）；<b>加速向下</b> 2 m/s²：N = m(g − a) = 60 × 8 = <b>480 N</b>（變輕）；等速度：600 N。</p></div>
+  <div class="note ex"><b class="tag">例題：滑輪兩物體</b><p>m₁ = 3 kg、m₂ = 1 kg 掛在定滑輪兩側（g = 10）：a = <span class="frac"><span class="num">(m₁ − m₂) g</span><span class="den">m₁ + m₂</span></span> = <span class="frac"><span class="num">2 × 10</span><span class="den">4</span></span> = <b>5 m/s²</b>，張力 T = m₂(g + a) = <b>15 N</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：蹺蹺板</b><p>左邊 40 N 距支點 3 m，右邊 60 N 要放在距支點 x：40 × 3 = 60 × x，x = <b>2 m</b>。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p><b>作用力與反作用力不是平衡力</b>：它們作用在不同物體上，不能相加抵消；平衡力是作用在同一物體上的兩個力。</p><p>「物體向前運動，一定有向前的力」是錯的：等速度運動時合力為零。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>合力 = 0 → 等速或靜止；F = ma；作用與反作用等大反向、作用在不同物體；力矩 = 力 × 力臂。</p></div>
+</section>
+
+<section class="sec" id="s4-3">
+  <h3><span class="id">4-3</span>萬有引力</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p>任何兩個有質量的物體之間都有互相吸引的力，這個力和<b>質量乘積成正比</b>、和<b>距離平方成反比</b>。這個「距離平方反比」是整單元最常考的地方。</p></div>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> = <span class="v"><span class="zh">萬有引力常數</span><span class="s">G</span><span class="u">N·m²/kg²</span></span> <span class="frac"><span class="num"><span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span></span><span class="den"><span class="v"><span class="zh">距離</span><span class="s">r</span><span class="u">m</span></span>²</span></span></span><span class="f">G ≈ 6.67 × 10⁻¹¹ N·m²/kg²</span></div>
+  <ul class="pts"><li>r 是兩物體<b>質心的距離</b>（球體量球心到球心）。</li><li>兩物體受到的引力<b>大小相等、方向相反</b>（作用力與反作用力）。</li><li>距離變 2 倍 → 力變 <span class="frac"><span class="num">1</span><span class="den">4</span></span>；距離變 <span class="frac"><span class="num">1</span><span class="den">2</span></span> → 力變 4 倍。</li></ul>
+  <h4 class="sub">一、重力加速度</h4>
+  <p>地球表面物體的重力就是地球對它的引力：m g = G <span class="frac"><span class="num">M m</span><span class="den">R²</span></span>，所以</p>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> = <span class="v"><span class="zh">萬有引力常數</span><span class="s">G</span><span class="u">N·m²/kg²</span></span> <span class="frac"><span class="num"><span class="v"><span class="zh">中心天體質量</span><span class="s">M</span><span class="u">kg</span></span></span><span class="den"><span class="v"><span class="zh">半徑</span><span class="s">R</span><span class="u">m</span></span>²</span></span></span><span class="f">離地心 r 處：g′ = G <span class="frac"><span class="num">M</span><span class="den">r²</span></span></span></div>
+  <p>離地面高度 h 處，r = R + h，g′ 與 g 的比 = <span class="frac"><span class="num">R²</span><span class="den">(R + h)²</span></span>。在高度 h = R（離地心 2R）時，g′ = <span class="frac"><span class="num">g</span><span class="den">4</span></span>。</p>
+  <h4 class="sub">二、克卜勒行星運動三定律</h4>
+  <div class="tbl"><table><thead><tr><th>定律</th><th>內容</th></tr></thead><tbody><tr><td>第一（軌道）</td><td>行星繞太陽的軌道是<b>橢圓</b>，太陽在<b>焦點</b>上</td></tr><tr><td>第二（面積）</td><td>行星和太陽的連線，在<b>相同時間掃過相同面積</b>（近日點快、遠日點慢）</td></tr><tr><td>第三（週期）</td><td>行星週期的<b>平方</b>和軌道平均半徑的<b>立方</b>成正比：<span class="frac"><span class="num">T²</span><span class="den">R³</span></span> = 定值</td></tr></tbody></table></div>
+  <h4 class="sub">三、圓軌道衛星</h4>
+  <p>萬有引力提供向心力：G <span class="frac"><span class="num">M m</span><span class="den">r²</span></span> = m <span class="frac"><span class="num">v²</span><span class="den">r</span></span>，得</p>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span> = √( <span class="frac"><span class="num"><span class="v"><span class="zh">萬有引力常數</span><span class="s">G</span><span class="u">N·m²/kg²</span></span> <span class="v"><span class="zh">中心天體質量</span><span class="s">M</span><span class="u">kg</span></span></span><span class="den"><span class="v"><span class="zh">距離</span><span class="s">r</span><span class="u">m</span></span></span></span> )</span><span class="f"><span class="v"><span class="zh">週期</span><span class="s">T</span><span class="u">s</span></span> = 2π √( <span class="frac"><span class="num"><span class="v"><span class="zh">距離</span><span class="s">r</span><span class="u">m</span></span>³</span><span class="den"><span class="v"><span class="zh">萬有引力常數</span><span class="s">G</span><span class="u">N·m²/kg²</span></span> <span class="v"><span class="zh">中心天體質量</span><span class="s">M</span><span class="u">kg</span></span></span></span> )</span></div>
+  <ul class="pts"><li>軌道越高（r 越大），衛星<b>速率越小、週期越長</b>。</li><li>同步衛星週期 24 小時，在赤道上空，和地面的人看起來靜止。</li><li>太空站中「失重」不是沒有重力，而是衛星和太空人一起<b>自由落體</b>。</li></ul>
+  <div class="note ex"><b class="tag">例題：引力比較</b><p>質量各為 1 kg 的兩個球相距 1 m：F = 6.67 × 10⁻¹¹ N（非常小）。若其中一個質量變 2 倍、距離變 2 倍：F 變為原來的 2 × <span class="frac"><span class="num">1</span><span class="den">4</span></span> = <b><span class="frac"><span class="num">1</span><span class="den">2</span></span> 倍</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：克卜勒第三定律</b><p>衛星 A 軌道半徑是 B 的 4 倍：<span class="frac"><span class="num">T_A²</span><span class="den">T_B²</span></span> = 4³ = 64，所以 T_A = 8 T_B，週期是 <b>8 倍</b>。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>重力和 r² 成反比，<b>不是</b>和 r 成反比。高度 h 處的 g′ 要用 (R + h)，不是 h。克卜勒第三定律用「半徑」要用軌道<b>半徑</b>，不是直徑。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>F = G m₁m₂／r²；g = GM／R²；T²／R³ = 定值；軌道越高衛星越慢、週期越長。</p></div>
+</section>
+
+<section class="sec" id="s4-4">
+  <h3><span class="id">4-4</span>摩擦力</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p>兩個接觸的面要滑動（或想滑動）時，接觸面會產生<b>阻止相對滑動</b>的力，叫摩擦力，方向和<b>相對滑動（趨勢）的方向相反</b>。摩擦力分<b>靜摩擦力</b>和<b>動摩擦力</b>兩種。</p></div>
+  <div class="tbl"><table><thead><tr><th>種類</th><th>什麼時候</th><th>大小</th></tr></thead><tbody><tr><td>靜摩擦力 fs</td><td>物體<b>還沒滑動</b></td><td>等於外力（大小隨外力變），最大為 μs N</td></tr><tr><td>最大靜摩擦力</td><td>快要滑動的瞬間</td><td>fs(最大) = μs × N</td></tr><tr><td>動摩擦力 fk</td><td>物體<b>正在滑動</b></td><td>fk = μk × N（固定值）</td></tr></tbody></table></div>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">動摩擦力</span><span class="s">fk</span><span class="u">N</span></span> = <span class="v"><span class="zh">動摩擦係數</span><span class="s">μk</span><span class="u">無單位</span></span> <span class="v"><span class="zh">正向力</span><span class="s">N</span><span class="u">N</span></span></span><span class="f"><span class="v"><span class="zh">靜摩擦力</span><span class="s">fs</span><span class="u">N</span></span> ≤ <span class="v"><span class="zh">靜摩擦係數</span><span class="s">μs</span><span class="u">無單位</span></span> <span class="v"><span class="zh">正向力</span><span class="s">N</span><span class="u">N</span></span></span></div>
+  <ul class="pts"><li><b>μs > μk</b>：要推動比推著走更費力。</li><li>摩擦力和<b>接觸面積、滑動速率無關</b>，只和接觸面的粗糙程度（μ）與正向力 N 有關。</li><li>平地上 N = mg；斜面上 N = mg cosθ。</li></ul>
+  <h4 class="sub">斜面上的物體</h4>
+  <div class="graphs one"><div class="graph"><svg viewBox="0 0 240 150" role="img" aria-label="斜面上的木塊受重力分解為沿斜面與垂直斜面兩個分量">
+<path class="w" d="M20 130 L210 130 L210 40 Z"/><path class="w" d="M45 130 A25 25 0 0 0 42 120"/><text x="52" y="125">θ</text>
+<g transform="rotate(-25.3 110 87)"><rect class="w" x="95" y="65" width="34" height="22" fill="var(--accent-soft)"/></g>
+<path class="ln" d="M112 76 V116" style="stroke-width:2"/><path class="ln" d="M112 76 L85 89" style="stroke-width:2"/><path class="ln" d="M112 76 L125 103" style="stroke-width:2"/><path class="ln" d="M112 76 L99 49" style="stroke-width:2"/>
+<text x="116" y="126">mg</text><text x="24" y="84">mg sinθ</text><text x="128" y="114">mg cosθ</text><text x="84" y="44">N</text></svg><div class="cap">重力 mg 分解成：沿斜面向下 mg sinθ、垂直斜面向下 mg cosθ，所以 N = mg cosθ</div></div></div>
+  <div class="formulas"><span class="f">光滑斜面：<span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> = <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> sin<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span></span><span class="f">有摩擦下滑：<span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> = <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> ( sin<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span> − <span class="v"><span class="zh">動摩擦係數</span><span class="s">μk</span><span class="u">無單位</span></span> cos<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span> )</span><span class="f">剛好要滑動：tan<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span> = <span class="v"><span class="zh">靜摩擦係數</span><span class="s">μs</span><span class="u">無單位</span></span></span></div>
+  <div class="note ex"><b class="tag">例題：平地上推木塊</b><p>木塊 10 kg（g = 10），μs = 0.5、μk = 0.4：N = 100 N，最大靜摩擦力 = 50 N，動摩擦力 = 40 N。用 30 N 推 → 沒動，摩擦力 = <b>30 N</b>（等於外力）。用 60 N 推 → 動了，摩擦力 = 40 N，a = <span class="frac"><span class="num">60 − 40</span><span class="den">10</span></span> = <b>2 m/s²</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：斜面</b><p>30° 光滑斜面：a = g sin30° = <b>5 m/s²</b>（g = 10）。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>物體<b>沒動</b>時摩擦力是「剛好等於外力」，不是 μN。只有「正要滑動」才是 μs N，「正在滑動」才是 μk N。斜面上 N 不等於 mg。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>動摩擦力 = μk N；靜摩擦力 ≤ μs N；斜面 N = mg cosθ、下滑力 = mg sinθ。</p></div>
+</section>
+
+<section class="sec lab" id="lab3">
+  <h3><span class="id">實驗</span>馬鈴薯向上爬</h3>
+  <p>這個實驗觀察「看起來往上滾、其實重心在下降」的現象。判斷物體會往哪裡動，不要看它的外形，要看<b>重心的高低</b>：物體總是傾向讓重心變低（位能變小）。實際操作與結論以老師上課為主。</p>
+</section>
+
+<!-- ========== 第5章 ========== -->
+<div class="chapter c5"><span class="num">05</span><h2>功與能量</h2></div>
+
+<section class="sec" id="s5-1">
+  <h3><span class="id">5-1</span>功與功率</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p><b>功</b>是「力在位移方向上的貢獻」：用力推物體，而且物體真的移動了，才有做功。<b>功率</b>是做功的<b>快慢</b>。</p></div>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">功</span><span class="s">W</span><span class="u">J</span></span> = <span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> <span class="v"><span class="zh">位移</span><span class="s">s</span><span class="u">m</span></span> cos<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span></span><span class="f">功的單位：J = N·m</span></div>
+  <div class="tbl"><table><thead><tr><th>夾角 θ</th><th>功</th><th>例子</th></tr></thead><tbody><tr><td>0°（力與位移同向）</td><td>正功 W = F s</td><td>推車前進</td></tr><tr><td>0° < θ < 90°</td><td>正功</td><td>斜向拉箱子</td></tr><tr><td>90°（垂直）</td><td><b>W = 0</b></td><td>提著書包水平走、圓周運動的向心力</td></tr><tr><td>180°（反向）</td><td>負功 W = −F s</td><td>摩擦力、煞車</td></tr></tbody></table></div>
+  <ul class="pts"><li><b>F–s 圖</b>的面積 = 功。</li><li>彈簧拉伸 x 所需的功 = <b><span class="frac"><span class="num">1</span><span class="den">2</span></span> k x²</b>（F–x 圖的三角形面積）。</li><li>好幾個力做功：總功 = 各力的功相加 = 合力的功。</li></ul>
+  <h4 class="sub">功率</h4>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">功</span><span class="s">W</span><span class="u">J</span></span></span><span class="den"><span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></span></span></span><span class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> <span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span>（平均力、平均速度；瞬時也可）</span></div>
+  <p>單位：瓦特 W = J／s。其他：1 度電 = 1 kWh = 3.6 × 10⁶ J；1 馬力 ≈ 746 W。</p>
+  <div class="note ex"><b class="tag">例題：斜向拉力</b><p>用 50 N、與水平夾 60° 的力拉箱子前進 4 m：W = 50 × 4 × cos 60° = 50 × 4 × <span class="frac"><span class="num">1</span><span class="den">2</span></span> = <b>100 J</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：提重物與功率</b><p>把 10 kg 物體等速提高 3 m（g = 10）：W = 10 × 10 × 3 = <b>300 J</b>；花 10 s → P = <span class="frac"><span class="num">300</span><span class="den">10</span></span> = <b>30 W</b>。汽車以 20 m/s 等速、阻力 2000 N：P = F v = 2000 × 20 = <b>40000 W = 40 kW</b>。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p><b>只看位移方向的分力</b>：力和位移垂直就不做功（θ = 90°，cos 90° = 0）。拿著重物不動，雖然很累，在物理上<b>沒有做功</b>（位移 = 0）。度（kWh）是<b>能量單位</b>，不是功率單位。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>W = F s cosθ；P = W／t = F v；F–s 圖面積 = 功；垂直不做功。</p></div>
+</section>
+
+<section class="sec" id="s5-2">
+  <h3><span class="id">5-2</span>力學能</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p><b>能量</b>是做功的能力。力學能 = <b>動能</b>（運動）＋ <b>位能</b>（位置或形變）。沒有摩擦等損耗時，力學能<b>守恆</b>——這是解題的捷徑，不用管過程，只比較起點和終點。</p></div>
+  <div class="formulas"><span class="f">動能 <span class="v"><span class="zh">動能</span><span class="s">K</span><span class="u">J</span></span> = <span class="frac"><span class="num">1</span><span class="den">2</span></span> <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span>²</span><span class="f">重力位能 <span class="v"><span class="zh">位能</span><span class="s">U</span><span class="u">J</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">高度</span><span class="s">h</span><span class="u">m</span></span></span><span class="f">彈力位能 <span class="v"><span class="zh">位能</span><span class="s">U</span><span class="u">J</span></span> = <span class="frac"><span class="num">1</span><span class="den">2</span></span> <span class="v"><span class="zh">彈力常數</span><span class="s">k</span><span class="u">N/m</span></span> <span class="v"><span class="zh">形變量</span><span class="s">x</span><span class="u">m</span></span>²</span></div>
+  <h4 class="sub">功能定理</h4>
+  <div class="formulas"><span class="f">合力對物體所做的總功 = 動能的變化：<span class="v"><span class="zh">功</span><span class="s">W</span><span class="u">J</span></span>總 = <span class="v"><span class="zh">動能</span><span class="s">K</span><span class="u">J</span></span>末 − <span class="v"><span class="zh">動能</span><span class="s">K</span><span class="u">J</span></span>初</span></div>
+  <h4 class="sub">力學能守恆</h4>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">力學能</span><span class="s">E</span><span class="u">J</span></span> = <span class="v"><span class="zh">動能</span><span class="s">K</span><span class="u">J</span></span> + <span class="v"><span class="zh">位能</span><span class="s">U</span><span class="u">J</span></span></span><span class="f">只有重力（或彈力）做功：<span class="frac"><span class="num">1</span><span class="den">2</span></span>m v₁² + m g h₁ = <span class="frac"><span class="num">1</span><span class="den">2</span></span>m v₂² + m g h₂</span></div>
+  <ul class="pts"><li>位能是<b>相對於參考點</b>說的，h 要先選定零位面；位能變化量與參考點無關。</li><li>重力、彈力是<b>保守力</b>，做功和路徑無關；摩擦力不是，會把力學能變成熱。</li><li>有摩擦力：<b>摩擦力做的負功 = 力學能的減少量</b>。</li></ul>
+  <div class="note ex"><b class="tag">例題：自由落下</b><p>從 h = 20 m 自由落下（g = 10）：m g h = <span class="frac"><span class="num">1</span><span class="den">2</span></span>m v²，v = √(2 g h) = √400 = <b>20 m/s</b>（與質量無關）。光滑斜面頂端落差 5 m，滑到底速率 = √(2 × 10 × 5) = <b>10 m/s</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：功能定理</b><p>5 kg 靜止物體受淨力 10 N，前進 10 m：W = 100 J = <span class="frac"><span class="num">1</span><span class="den">2</span></span> × 5 × v²，v = √40 ≈ <b>6.3 m/s</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：彈簧與摩擦損失</b><p>彈簧 k = 100 N/m 壓縮 0.2 m，彈出 1 kg 物體：<span class="frac"><span class="num">1</span><span class="den">2</span></span> × 100 × 0.04 = 2 J = <span class="frac"><span class="num">1</span><span class="den">2</span></span> × 1 × v²，v = <b>2 m/s</b>。另：2 kg 物體從 5 m 高滑下，到底速率 8 m/s：損失 = 2 × 10 × 5 − <span class="frac"><span class="num">1</span><span class="den">2</span></span> × 2 × 64 = 100 − 64 = <b>36 J</b>（被摩擦力變成熱）。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>動能和速度<b>平方</b>成正比：速度變 2 倍，動能變 <b>4 倍</b>。重力位能和<b>路徑無關</b>，只和高度差有關。有摩擦時不能直接用力學能守恆。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>K = ½mv²；U = mgh；沒有摩擦：K + U 不變；總功 = ΔK。</p></div>
+</section>
+
+<section class="sec" id="s5-3">
+  <h3><span class="id">5-3</span>能量轉換</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p>能量有很多形式（力學能、熱能、電能、光能、化學能、核能…），可以互相轉換，但<b>總量永遠不變</b>（能量守恆）。我們常說「能量損失」，其實是變成了不想要的形式，例如熱。</p></div>
+  <div class="tbl"><table><thead><tr><th>裝置</th><th>能量轉換</th></tr></thead><tbody><tr><td>發電機</td><td>動能（機械能）→ 電能</td></tr><tr><td>電動機（馬達）</td><td>電能 → 動能</td></tr><tr><td>電燈泡</td><td>電能 → 光能 + 熱能</td></tr><tr><td>太陽能板</td><td>光能 → 電能</td></tr><tr><td>水力發電</td><td>水的位能 → 動能 → 電能</td></tr><tr><td>電池放電</td><td>化學能 → 電能</td></tr><tr><td>光合作用</td><td>光能 → 化學能</td></tr></tbody></table></div>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">效率</span><span class="s">η</span><span class="u">%</span></span> = <span class="frac"><span class="num">有用的輸出能量（或功率）</span><span class="den">輸入的總能量（或功率）</span></span> × 100%</span></div>
+  <ul class="pts"><li>效率一定小於 100%（有熱損失）。</li><li>節能：減少不必要的能量轉成熱；再生能源：太陽、風力、水力、地熱等可以持續取得。</li></ul>
+  <div class="note ex"><b class="tag">例題：效率</b><p>馬達輸入功率 500 W、輸出機械功率 400 W：效率 = <span class="frac"><span class="num">400</span><span class="den">500</span></span> × 100% = <b>80%</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：水力發電</b><p>1000 kg 的水從 50 m 高落下：位能 = 1000 × 10 × 50 = 5 × 10⁵ J；效率 80% 時，輸出電能 = <b>4 × 10⁵ J</b>。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>「能量用完了」並不是消失，而是轉成不易再利用的形式（熱）。效率的分子是<b>有用的輸出</b>，分母是輸入。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>能量只會轉換、不會消失；效率 = 輸出／輸入 × 100%。</p></div>
+</section>
+
+<section class="sec" id="s5-4">
+  <h3><span class="id">5-4</span>核能</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p>核反應前後，原子核的總質量會<b>少一點點</b>（<b>質量虧損</b>），這點質量變成了巨大的能量。這就是愛因斯坦的<b>質能互換</b>。</p></div>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">釋放能量</span><span class="s">E</span><span class="u">J</span></span> = <span class="v"><span class="zh">質量虧損</span><span class="s">Δm</span><span class="u">kg</span></span> <span class="v"><span class="zh">光速</span><span class="s">c</span><span class="u">m/s</span></span>²</span><span class="f">c = 3 × 10⁸ m/s</span></div>
+  <div class="tbl"><table><thead><tr><th></th><th>核分裂</th><th>核融合</th></tr></thead><tbody><tr><td>做法</td><td>重核（如鈾-235）被中子撞擊，分裂成兩個較輕的核，放出能量和 2～3 個中子</td><td>輕核（如氫）結合成較重的核（如氦）</td></tr><tr><td>特色</td><td>可以<b>連鎖反應</b>；核電廠用（受控），原子彈（不受控）</td><td>需要極高溫高壓；<b>太陽</b>的能量來源；氫彈</td></tr><tr><td>廢料</td><td>放射性廢料需要妥善處理</td><td>相對乾淨，但技術尚未成熟</td></tr></tbody></table></div>
+  <ul class="pts"><li>核能電廠利用核分裂的熱，把水變成蒸氣推動發電機。</li><li>輻射有害，需要屏蔽與管理；核廢料難處理是爭議。</li></ul>
+  <div class="note ex"><b class="tag">例題：質量虧損</b><p>虧損 1 g（10⁻³ kg）的質量：E = 10⁻³ × (3 × 10⁸)² = <b>9 × 10¹³ J</b>，相當於約 2000 萬度電。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>質量虧損要用 <b>kg</b> 代入、光速 c 用 3 × 10⁸（m/s），能量才是 J。核分裂是「大變小」、核融合是「小變大」。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>E = Δm c²；分裂：重核 → 輕核；融合：輕核 → 重核（太陽）。</p></div>
+</section>
+
+<section class="sec lab" id="lab4">
+  <h3><span class="id">實驗</span>彈力飛車</h3>
+  <p>橡皮筋被拉長儲存<b>彈力位能</b>，放開後轉成車子的<b>動能</b>。拉得越長，儲存的能量越多，車子跑得越遠、越快（能量和形變量的<b>平方</b>成正比）。有摩擦力，能量不會 100% 變成動能。</p>
+</section>
+
+<!-- ========== 第6章 ========== -->
+<div class="chapter c6"><span class="num">06</span><h2>動量守恆</h2></div>
+
+<section class="sec" id="s6-1">
+  <h3><span class="id">6-1</span>動量與衝量</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p><b>動量</b>是「運動的衝勁」：質量越大、速度越快，動量越大。要改變物體的動量，需要<b>力作用一段時間</b>，這個「力 × 時間」就叫<b>衝量</b>。</p></div>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">動量</span><span class="s">p</span><span class="u">kg·m/s</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span>（向量，方向同速度）</span><span class="f"><span class="v"><span class="zh">衝量</span><span class="s">J</span><span class="u">N·s</span></span> = <span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> <span class="v"><span class="zh">作用時間</span><span class="s">Δt</span><span class="u">s</span></span> = <span class="v"><span class="zh">動量變化</span><span class="s">Δp</span><span class="u">kg·m/s</span></span>（衝量 = 動量變化）</span></div>
+  <ul class="pts"><li>動量單位 kg·m/s；衝量單位 N·s，兩者<b>相等</b>（1 N·s = 1 kg·m/s）。</li><li><b>F–t 圖的面積 = 衝量</b>（力隨時間變化時用）。</li><li>牛頓第二定律的另一個寫法：<b>F = <span class="frac"><span class="num">Δp</span><span class="den">Δt</span></span></b>（合力 = 動量變化率）。</li><li>動能和動量的關係：K = <span class="frac"><span class="num">p²</span><span class="den">2m</span></span>。</li></ul>
+  <h4 class="sub">為什麼要延長作用時間？</h4>
+  <p>衝量（動量變化）固定時，<b>作用時間越長，平均力越小</b>。安全氣囊、安全帽、跳高的軟墊、接球時手往後縮，都是這個原理。</p>
+  <div class="note ex"><b class="tag">例題：球撞牆</b><p>0.2 kg 的球以 10 m/s 撞牆，以 8 m/s 彈回（取撞牆方向為正）：Δp = 0.2 × (−8) − 0.2 × 10 = −3.6，衝量大小 <b>3.6 N·s</b>。若接觸 0.02 s，平均力 = <span class="frac"><span class="num">3.6</span><span class="den">0.02</span></span> = <b>180 N</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：動量與動能</b><p>質量 2 kg、速率 3 m/s：p = <b>6 kg·m/s</b>，K = <span class="frac"><span class="num">1</span><span class="den">2</span></span> × 2 × 9 = <b>9 J</b>。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>動量是<b>向量</b>：反彈時速度方向相反，要用「末 − 初」，所以反彈的衝量比「撞上後停下」更大。動量和動能不同：動量是 1 次方、動能是 2 次方。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>p = mv；J = FΔt = Δp；F = Δp／Δt；時間越長，力越小。</p></div>
+</section>
+
+<section class="sec" id="s6-2">
+  <h3><span class="id">6-2</span>動量守恆</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p>如果一個系統<b>所受的合外力為零</b>（例如兩個物體碰撞時，內力遠大於外力），那麼碰撞前後<b>總動量不變</b>。這是解碰撞問題最有用的工具。</p></div>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度一</span><span class="s">v₁</span><span class="u">m/s</span></span> + <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度二</span><span class="s">v₂</span><span class="u">m/s</span></span> = <span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> <span class="v"><span class="zh">碰後速度一</span><span class="s">v₁′</span><span class="u">m/s</span></span> + <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span> <span class="v"><span class="zh">碰後速度二</span><span class="s">v₂′</span><span class="u">m/s</span></span></span></div>
+  <ul class="pts"><li>動量守恆是<b>向量</b>式，一維問題先<b>設好正方向</b>，反向速度帶負號。</li><li>碰撞類型只看<b>動能有沒有守恆</b>，動量都守恆（合外力為零時）。</li></ul>
+  <div class="tbl"><table><thead><tr><th>類型</th><th>動能</th><th>特色</th></tr></thead><tbody><tr><td>彈性碰撞</td><td><b>守恆</b></td><td>碰後分開；恢復係數 e = 1</td></tr><tr><td>非彈性碰撞</td><td>減少</td><td>碰後分開；0 < e < 1</td></tr><tr><td>完全非彈性碰撞</td><td>損失最多</td><td>碰後<b>黏在一起</b>；e = 0</td></tr></tbody></table></div>
+  <div class="formulas"><span class="f">完全非彈性：<span class="v"><span class="zh">碰後速度</span><span class="s">v′</span><span class="u">m/s</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度一</span><span class="s">v₁</span><span class="u">m/s</span></span> + <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度二</span><span class="s">v₂</span><span class="u">m/s</span></span></span><span class="den"><span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> + <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span></span></span></span><span class="f">恢復係數：<span class="v"><span class="zh">恢復係數</span><span class="s">e</span><span class="u">無單位</span></span> = <span class="frac"><span class="num">碰後分離速率</span><span class="den">碰前接近速率</span></span> = −<span class="frac"><span class="num"><span class="v"><span class="zh">碰後速度一</span><span class="s">v₁′</span><span class="u">m/s</span></span> − <span class="v"><span class="zh">碰後速度二</span><span class="s">v₂′</span><span class="u">m/s</span></span></span><span class="den"><span class="v"><span class="zh">速度一</span><span class="s">v₁</span><span class="u">m/s</span></span> − <span class="v"><span class="zh">速度二</span><span class="s">v₂</span><span class="u">m/s</span></span></span></span></span></div>
+  <div class="formulas"><span class="f">一維彈性碰撞：<span class="v"><span class="zh">碰後速度一</span><span class="s">v₁′</span><span class="u">m/s</span></span> = <span class="frac"><span class="num">( <span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> − <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span> ) <span class="v"><span class="zh">速度一</span><span class="s">v₁</span><span class="u">m/s</span></span> + 2<span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度二</span><span class="s">v₂</span><span class="u">m/s</span></span></span><span class="den"><span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> + <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span></span></span></span><span class="f"><span class="v"><span class="zh">碰後速度二</span><span class="s">v₂′</span><span class="u">m/s</span></span> = <span class="frac"><span class="num">( <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span> − <span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> ) <span class="v"><span class="zh">速度二</span><span class="s">v₂</span><span class="u">m/s</span></span> + 2<span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度一</span><span class="s">v₁</span><span class="u">m/s</span></span></span><span class="den"><span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> + <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span></span></span></span></div>
+  <ul class="pts"><li><b>質量相等</b>的彈性碰撞：兩個物體<b>交換速度</b>。</li><li><b>反衝</b>（爆炸、發射）：原本靜止、總動量 0，分開後兩者動量等大反向，m₁v₁ = −m₂v₂。</li></ul>
+  <div class="note ex"><b class="tag">例題：完全非彈性碰撞</b><p>2 kg、5 m/s 撞靜止的 3 kg 並黏在一起：v′ = <span class="frac"><span class="num">2 × 5</span><span class="den">2 + 3</span></span> = <b>2 m/s</b>。動能：碰前 <span class="frac"><span class="num">1</span><span class="den">2</span></span> × 2 × 25 = 25 J，碰後 <span class="frac"><span class="num">1</span><span class="den">2</span></span> × 5 × 4 = 10 J，損失 <b>15 J</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：彈性碰撞</b><p>2 kg、6 m/s 撞靜止的 1 kg（彈性）：v₁′ = <span class="frac"><span class="num">(2 − 1) × 6</span><span class="den">3</span></span> = <b>2 m/s</b>，v₂′ = <span class="frac"><span class="num">2 × 2 × 6</span><span class="den">3</span></span> = <b>8 m/s</b>。驗算動量：2 × 2 + 1 × 8 = 12 = 2 × 6 ✓。</p></div>
+  <div class="note ex"><b class="tag">例題：槍的反衝</b><p>槍 3 kg 發射 0.01 kg 的子彈，子彈速度 300 m/s：槍後退速率 = <span class="frac"><span class="num">0.01 × 300</span><span class="den">3</span></span> = <b>1 m/s</b>（方向相反）。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>完全非彈性碰撞損失的是<b>動能</b>，動量<b>沒有</b>損失。動量守恆要先選正方向；彈性碰撞要同時用動量守恆與動能守恆。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>合外力 = 0 → 總動量守恆；完全非彈性 v′ = 總動量／總質量；等質量彈性碰撞交換速度。</p></div>
+</section>
+
+<section class="sec lab" id="lab5">
+  <h3><span class="id">實驗</span>水杯取球</h3>
+  <p>利用<b>慣性</b>與<b>衝量</b>：慢慢拉動是讓物體有足夠時間跟著動；用很短的時間快速抽走（作用時間極短，衝量很小），上面的物體幾乎維持原來的靜止狀態。實際做法與觀察以老師上課為主。</p>
+</section>
+
+<!-- ========== 第7章 ========== -->
+<div class="chapter c7"><span class="num">07</span><h2>流體的性質</h2></div>
+
+<section class="sec" id="s7-1">
+  <h3><span class="id">7-1</span>靜止液體的壓力及浮力</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p><b>壓力</b>是單位面積上受到的力。液體壓力隨<b>深度</b>增加；物體放進液體裡，會受到向上的<b>浮力</b>（阿基米德原理）。</p></div>
+  <h4 class="sub">一、密度與壓力</h4>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">密度</span><span class="s">ρ</span><span class="u">kg/m³</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span></span><span class="den"><span class="v"><span class="zh">體積</span><span class="s">V</span><span class="u">m³</span></span></span></span></span><span class="f"><span class="v"><span class="zh">壓力</span><span class="s">P</span><span class="u">Pa</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span></span><span class="den"><span class="v"><span class="zh">面積</span><span class="s">A</span><span class="u">m²</span></span></span></span></span><span class="f">壓力單位：Pa = N／m²</span></div>
+  <p>水的密度 = 1000 kg／m³ = 1 g／cm³。力相同時，面積越小壓力越大（刀刃鋒利、圖釘尖端）。</p>
+  <h4 class="sub">二、液體內部的壓力</h4>
+  <div class="formulas"><span class="f">表壓 <span class="v"><span class="zh">壓力</span><span class="s">P</span><span class="u">Pa</span></span> = <span class="v"><span class="zh">密度</span><span class="s">ρ</span><span class="u">kg/m³</span></span> <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">高度</span><span class="s">h</span><span class="u">m</span></span></span><span class="f">絕對壓力 = <span class="v"><span class="zh">大氣壓力</span><span class="s">P₀</span><span class="u">Pa</span></span> + <span class="v"><span class="zh">密度</span><span class="s">ρ</span><span class="u">kg/m³</span></span> <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">高度</span><span class="s">h</span><span class="u">m</span></span></span></div>
+  <ul class="pts"><li>只和<b>深度 h</b> 與液體密度有關，和容器形狀、液體總量無關。</li><li><b>同一深度，各方向壓力相等</b>；同種液體相同高度的點壓力相同。</li><li>水每深 10 m，壓力增加約 1 大氣壓（10⁵ Pa）。</li></ul>
+  <h4 class="sub">三、阿基米德原理（浮力）</h4>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">浮力</span><span class="s">B</span><span class="u">N</span></span> = <span class="v"><span class="zh">密度</span><span class="s">ρ</span><span class="u">kg/m³</span></span> <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">體積</span><span class="s">V</span><span class="u">m³</span></span>（ρ 是<b>液體</b>密度，V 是<b>排開液體的體積</b>）</span></div>
+  <div class="tbl"><table><thead><tr><th>狀態</th><th>條件</th><th>說明</th></tr></thead><tbody><tr><td>上浮 / 漂浮</td><td>物體密度 < 液體密度</td><td>漂浮時 B = 物重 W；浸入比例 = <span class="frac"><span class="num">ρ物</span><span class="den">ρ液</span></span></td></tr><tr><td>懸浮</td><td>物體密度 = 液體密度</td><td>B = W，停在液體中任何位置</td></tr><tr><td>下沉</td><td>物體密度 > 液體密度</td><td>視重 = W − B</td></tr></tbody></table></div>
+  <div class="note ex"><b class="tag">例題：壓力</b><p>水深 10 m：P = 1000 × 10 × 10 = <b>10⁵ Pa</b>（約 1 大氣壓），潛水員受的絕對壓力約 <b>2 大氣壓</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：浮力</b><p>體積 0.002 m³ 的物體完全浸入水中：B = 1000 × 10 × 0.002 = <b>20 N</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：漂浮</b><p>密度 600 kg／m³ 的木塊漂浮在水上：浸入比例 = <span class="frac"><span class="num">600</span><span class="den">1000</span></span> = <b>60%</b>。冰（900 kg／m³）在水中：<b>90%</b> 在水面下。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>浮力公式的 ρ 是<b>液體</b>的密度；V 是<b>排開液體的體積</b>（不是物體總體積，除非完全浸入）。浮力和物體在水中的<b>深度無關</b>（完全浸入後）。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>P = ρgh；B = ρ液 g V排；漂浮 B = W；浸入比例 = ρ物／ρ液。</p></div>
+</section>
+
+<section class="sec" id="s7-2">
+  <h3><span class="id">7-2</span>帕斯卡原理及其應用</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p><b>帕斯卡原理</b>：密閉容器內的靜止液體，某處受到的壓力改變，會<b>原封不動</b>地傳到液體的每一處與容器壁。</p></div>
+  <div class="graphs one"><div class="graph"><svg viewBox="0 0 260 150" role="img" aria-label="液壓機：小活塞施力 F₁，大活塞產生 F₂">
+<path class="w" d="M30 40 V110 H230 V40 M60 40 V90 H200 V40"/><rect class="w" x="34" y="30" width="22" height="10" fill="var(--accent-soft)"/><rect class="w" x="204" y="30" width="22" height="10" fill="var(--accent-soft)"/>
+<path class="ln" d="M45 6 V28" style="stroke-width:2"/><path class="ln" d="M215 6 V28" style="stroke-width:2"/>
+<text x="8" y="16">F₁</text><text x="232" y="16">F₂</text><text x="34" y="132">小活塞 A₁</text><text x="160" y="132">大活塞 A₂</text><text x="130" y="104" text-anchor="middle">密閉液體</text></svg><div class="cap">液壓機：小活塞的壓力等於大活塞的壓力</div></div></div>
+  <div class="formulas"><span class="f"><span class="frac"><span class="num"><span class="v"><span class="zh">力一</span><span class="s">F₁</span><span class="u">N</span></span></span><span class="den"><span class="v"><span class="zh">面積一</span><span class="s">A₁</span><span class="u">m²</span></span></span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">力二</span><span class="s">F₂</span><span class="u">N</span></span></span><span class="den"><span class="v"><span class="zh">面積二</span><span class="s">A₂</span><span class="u">m²</span></span></span></span></span><span class="f">也就是 <span class="v"><span class="zh">力二</span><span class="s">F₂</span><span class="u">N</span></span> = <span class="v"><span class="zh">力一</span><span class="s">F₁</span><span class="u">N</span></span> × <span class="frac"><span class="num"><span class="v"><span class="zh">面積二</span><span class="s">A₂</span><span class="u">m²</span></span></span><span class="den"><span class="v"><span class="zh">面積一</span><span class="s">A₁</span><span class="u">m²</span></span></span></span></span></div>
+  <ul class="pts"><li>面積大的活塞，得到的力<b>也大</b>（力放大倍數 = 面積比）。</li><li><b>能量不會憑空變多</b>：大活塞移動的距離比較小，F₁d₁ = F₂d₂（功相等）。</li><li>應用：油壓千斤頂、汽車煞車、挖土機、牙醫椅。</li></ul>
+  <div class="note ex"><b class="tag">例題：油壓千斤頂</b><p>小活塞面積 10 cm²、大活塞 500 cm²，在小活塞施力 100 N：F₂ = 100 × <span class="frac"><span class="num">500</span><span class="den">10</span></span> = <b>5000 N</b>。大活塞每上升 1 cm，小活塞要下壓 <b>50 cm</b>。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>液壓機放大的是<b>力</b>，不是功或能量。面積要用同一單位（都用 cm² 或都用 m²）。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>F₁／A₁ = F₂／A₂；力放大多少，距離就縮小多少。</p></div>
+</section>
+
+<section class="sec" id="s7-3">
+  <h3><span class="id">7-3</span>大氣壓力</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p>空氣有重量，地球表面的人與物體都受到大氣向下的壓力，叫<b>大氣壓力</b>。托里切利用水銀柱量出了它的大小：<b>1 大氣壓 = 76 cmHg</b>。</p></div>
+  <div class="tbl"><table><thead><tr><th>單位換算（1 大氣壓 atm）</th></tr></thead><tbody><tr><td>= 76 cmHg = 760 mmHg</td></tr><tr><td>≈ 1.013 × 10⁵ Pa（約 10⁵ Pa）</td></tr><tr><td>≈ 1013 百帕（hPa）</td></tr><tr><td>≈ 10.3 公尺水柱</td></tr></tbody></table></div>
+  <ul class="pts"><li><b>托里切利實驗</b>：玻璃管裝滿水銀倒立在水銀槽中，管內水銀柱高度約 76 cm，管頂是<b>真空</b>；管子傾斜，垂直高度不變。</li><li>換成水（密度為水銀的 <span class="frac"><span class="num">1</span><span class="den">13.6</span></span>）：水柱高 76 × 13.6 ≈ 1033 cm ≈ 10.3 m。</li><li>高度越高，空氣越稀薄，大氣壓<b>越低</b>。</li><li>馬德堡半球實驗證明大氣壓力很大。</li><li>吸管、吸盤、抽水機都靠大氣壓，其實是「大氣把東西壓進去」。</li></ul>
+  <div class="formulas"><span class="f">管內氣體壓力（cmHg）= 大氣壓 ± 水銀柱高度差</span></div>
+  <div class="note ex"><b class="tag">例題：U 形管</b><p>左端封閉、右端開口（大氣壓 76 cmHg），右邊水銀面比左邊高 10 cm：封閉氣體壓力 = 76 + 10 = <b>86 cmHg</b>。若右邊比左邊低 10 cm：76 − 10 = 66 cmHg。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>水銀柱的高度看<b>垂直高度</b>，和管子粗細、傾斜程度無關。壓力單位要換成同一種才能相加。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>1 atm = 76 cmHg ≈ 1.013×10⁵ Pa；高度越高大氣壓越低。</p></div>
+</section>
+
+<section class="sec lab" id="lab6">
+  <h3><span class="id">實驗</span>漂浮馬鈴薯</h3>
+  <p>在不同濃度的鹽水中，馬鈴薯會浮起或沉下。鹽水越濃，<b>液體密度越大</b>；當液體密度 > 馬鈴薯密度，馬鈴薯就浮起（浮力 > 重力）。把鹽水濃度調到剛好讓馬鈴薯懸浮，就能量出馬鈴薯的密度。</p>
+</section>
+
+<!-- ========== 第8章 ========== -->
+<div class="chapter c8"><span class="num">08</span><h2>溫度與熱量</h2></div>
+
+<section class="sec" id="s8-1">
+  <h3><span class="id">8-1</span>溫度與熱平衡</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p><b>溫度</b>表示物體的冷熱程度（分子平均動能的大小）。兩個溫度不同的物體接觸，<b>熱</b>會從高溫流向低溫，直到溫度相同，叫<b>熱平衡</b>。</p></div>
+  <div class="tbl"><table><thead><tr><th>溫標</th><th>符號</th><th>水的冰點</th><th>水的沸點</th></tr></thead><tbody><tr><td>攝氏</td><td>°C</td><td>0</td><td>100</td></tr><tr><td>華氏</td><td>°F</td><td>32</td><td>212</td></tr><tr><td>克氏（絕對溫標）</td><td>K</td><td>273</td><td>373</td></tr></tbody></table></div>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">華氏溫度</span><span class="s">T℉</span><span class="u">°F</span></span> = <span class="frac"><span class="num">9</span><span class="den">5</span></span> <span class="v"><span class="zh">攝氏溫度</span><span class="s">T℃</span><span class="u">°C</span></span> + 32</span><span class="f"><span class="v"><span class="zh">克氏溫度</span><span class="s">T</span><span class="u">K</span></span> = <span class="v"><span class="zh">攝氏溫度</span><span class="s">T℃</span><span class="u">°C</span></span> + 273</span><span class="f">簡易記法：<span class="frac"><span class="num"><span class="v"><span class="zh">華氏溫度</span><span class="s">T℉</span><span class="u">°F</span></span> − 32</span><span class="den">9</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">攝氏溫度</span><span class="s">T℃</span><span class="u">°C</span></span></span><span class="den">5</span></span></span></div>
+  <ul class="pts"><li>克氏溫度沒有負值，0 K 是絕對零度（−273 °C）。</li><li>溫度計：利用物質受熱膨脹（液體溫度計）、電阻變化等性質。</li><li>熱平衡：A 與 B 熱平衡、B 與 C 熱平衡 → A 與 C 也熱平衡（熱力學第零定律），所以能用溫度計量溫度。</li></ul>
+  <div class="note ex"><b class="tag">例題：單位換算</b><p>37 °C = <span class="frac"><span class="num">9</span><span class="den">5</span></span> × 37 + 32 = <b>98.6 °F</b>；100 °C = <b>373 K</b>；−40 °C = −40 °F（兩種溫標在 −40 度相等）。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>溫度的「差」：攝氏的 1 度 = 克氏的 1 度（ΔT 相同），但華氏的 1 度比較小（攝氏 1 度 = 華氏 1.8 度）。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>°F = 9／5 °C + 32；K = °C + 273；熱由高溫流向低溫。</p></div>
+</section>
+
+<section class="sec" id="s8-2">
+  <h3><span class="id">8-2</span>比熱與熱容量</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p><b>熱量</b>是因溫度不同而傳遞的能量。<b>比熱</b>是「讓 1 g 的物質升高 1 °C 需要的熱量」，每種物質不同；水的比熱很大，所以海邊氣溫變化小。</p></div>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">熱量</span><span class="s">Q</span><span class="u">cal</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">比熱</span><span class="s">c</span><span class="u">cal/g·°C</span></span> <span class="v"><span class="zh">溫度變化</span><span class="s">ΔT</span><span class="u">°C</span></span></span><span class="f">熱容量 <span class="v"><span class="zh">熱容量</span><span class="s">C</span><span class="u">cal/°C</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">比熱</span><span class="s">c</span><span class="u">cal/g·°C</span></span></span><span class="f"><span class="v"><span class="zh">熱量</span><span class="s">Q</span><span class="u">cal</span></span> = <span class="v"><span class="zh">熱容量</span><span class="s">C</span><span class="u">cal/°C</span></span> <span class="v"><span class="zh">溫度變化</span><span class="s">ΔT</span><span class="u">°C</span></span></span></div>
+  <ul class="pts"><li>熱量單位：<b>1 卡 (cal) = 4.18 J</b>（約 4.2）；1 大卡 = 1000 cal。</li><li>水的比熱 = <b>1 cal／g·°C</b>（= 4.18 J／g·°C），冰約 0.5、水蒸氣約 0.5，金屬通常小於 0.2（題目有給用題目的）。</li><li><b>熱平衡（混合）</b>：不計熱損失時，高溫物體<b>放出的熱 = 低溫物體吸收的熱</b>。</li></ul>
+  <div class="formulas"><span class="f">混合：<span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> <span class="v"><span class="zh">比熱</span><span class="s">c</span><span class="u">cal/g·°C</span></span> ( <span class="v"><span class="zh">混合溫度</span><span class="s">T混</span><span class="u">°C</span></span> − <span class="v"><span class="zh">低溫物體初溫</span><span class="s">T₁</span><span class="u">°C</span></span> ) = <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span> <span class="v"><span class="zh">比熱</span><span class="s">c</span><span class="u">cal/g·°C</span></span> ( <span class="v"><span class="zh">高溫物體初溫</span><span class="s">T₂</span><span class="u">°C</span></span> − <span class="v"><span class="zh">混合溫度</span><span class="s">T混</span><span class="u">°C</span></span> )</span></div>
+  <div class="note ex"><b class="tag">例題：加熱</b><p>500 g 的水從 20 °C 加熱到 60 °C：Q = 500 × 1 × 40 = <b>20000 cal = 20 kcal ≈ 83600 J</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：混合</b><p>200 g、20 °C 的水與 100 g、80 °C 的水混合（同為水，c 約掉）：T = <span class="frac"><span class="num">200 × 20 + 100 × 80</span><span class="den">200 + 100</span></span> = <b>40 °C</b>。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>Q = mcΔT 的 ΔT 是<b>溫度變化量</b>（末溫 − 初溫），不是末溫。熱平衡時放熱的一方是<b>高溫</b>物體。熱容量和質量有關，比熱和質量無關。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>Q = mcΔT；1 cal = 4.18 J；放熱 = 吸熱。</p></div>
+</section>
+
+<section class="sec" id="s8-3">
+  <h3><span class="id">8-3</span>物質的三態變化與潛熱</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p>物質有固態、液態、氣態。三態變化時，<b>吸收或放出的熱不會讓溫度改變</b>（而是用來改變分子的排列），這份熱叫<b>潛熱</b>。</p></div>
+  <div class="tbl"><table><thead><tr><th>變化</th><th>名稱</th><th>吸放熱</th></tr></thead><tbody><tr><td>固 → 液</td><td>熔化</td><td>吸熱</td></tr><tr><td>液 → 固</td><td>凝固</td><td>放熱</td></tr><tr><td>液 → 氣</td><td>汽化（蒸發、沸騰）</td><td>吸熱</td></tr><tr><td>氣 → 液</td><td>凝結</td><td>放熱</td></tr><tr><td>固 → 氣</td><td>昇華</td><td>吸熱</td></tr><tr><td>氣 → 固</td><td>凝華</td><td>放熱</td></tr></tbody></table></div>
+  <div class="formulas"><span class="f"><span class="v"><span class="zh">熱量</span><span class="s">Q</span><span class="u">cal</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">潛熱</span><span class="s">L</span><span class="u">cal/g</span></span></span><span class="f">水：熔化熱 80 cal／g，汽化熱 540 cal／g</span></div>
+  <div class="graphs one"><div class="graph"><svg viewBox="0 0 260 150" role="img" aria-label="冰加熱的溫度與熱量關係圖，兩個水平段是熔化與汽化">
+<path class="ax" d="M30 130 H245 M30 130 V12"/><path class="ln" d="M30 118 L60 100 L105 100 L150 40 L195 40 L235 18"/>
+<text x="200" y="146">熱量 Q</text><text x="6" y="20">T</text><text x="64" y="94">熔化 0°C</text><text x="150" y="33">汽化 100°C</text><text x="40" y="92">冰</text><text x="130" y="92">水</text><text x="210" y="14">汽</text></svg><div class="cap">加熱曲線：斜線是升溫（Q = mcΔT），水平線是變態（Q = mL，溫度不變）</div></div></div>
+  <div class="note ex"><b class="tag">例題：冰變蒸氣</b><p>10 g、0 °C 的冰變成 100 °C 的水蒸氣需要的熱量：熔化 10 × 80 = 800 cal；升溫 10 × 1 × 100 = 1000 cal；汽化 10 × 540 = 5400 cal；合計 <b>7200 cal</b>。</p></div>
+  <div class="note ex"><b class="tag">例題：冰水混合</b><p>0 °C 的冰 m 克，放入 100 g、80 °C 的水，最後恰好都變成 0 °C 的水：水放熱 100 × 1 × 80 = 8000 cal = m × 80，m = <b>100 g</b>。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>變態期間溫度<b>不變</b>（水平線），不能用 mcΔT 算（ΔT = 0）。分段計算：升溫段用 mcΔT、變態段用 mL，再相加。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>Q = mL；變態時吸／放熱但溫度不變；冰熔化熱 80、水汽化熱 540 cal／g。</p></div>
+</section>
+
+<section class="sec" id="s8-4">
+  <h3><span class="id">8-4</span>熱膨脹</h3>
+  <div class="note know"><b class="tag">先搞懂</b><p>大部分物質受熱會膨脹、遇冷會收縮，因為溫度升高，分子振動得更劇烈，彼此的平均距離變大。</p></div>
+  <div class="formulas"><span class="f">線膨脹：<span class="v"><span class="zh">長度變化</span><span class="s">ΔL</span><span class="u">m</span></span> = <span class="v"><span class="zh">線膨脹係數</span><span class="s">α</span><span class="u">1/°C</span></span> <span class="v"><span class="zh">原長</span><span class="s">L₀</span><span class="u">m</span></span> <span class="v"><span class="zh">溫度變化</span><span class="s">ΔT</span><span class="u">°C</span></span></span><span class="f">體膨脹：<span class="v"><span class="zh">體積變化</span><span class="s">ΔV</span><span class="u">m³</span></span> = <span class="v"><span class="zh">體膨脹係數</span><span class="s">β</span><span class="u">1/°C</span></span> <span class="v"><span class="zh">原體積</span><span class="s">V₀</span><span class="u">m³</span></span> <span class="v"><span class="zh">溫度變化</span><span class="s">ΔT</span><span class="u">°C</span></span></span></div>
+  <ul class="pts"><li>固體的體膨脹係數約為線膨脹係數的 <b>3 倍</b>（β ≈ 3α）；面膨脹約 2 倍（2α）。</li><li>不同材料 α 不同：把兩種金屬貼在一起成「<b>雙金屬片</b>」，受熱時向 α 較小的一邊彎曲，可做恆溫器。</li><li>鐵軌、橋樑要留伸縮縫，就是怕熱膨脹把它擠壞。</li><li><b>水的反常膨脹</b>：水在 <b>4 °C</b> 時密度最大，所以湖水結冰時，冰在上面，魚能在底下過冬。</li></ul>
+  <div class="note ex"><b class="tag">例題：鐵軌</b><p>20 m 的鐵軌（α = 1.2 × 10⁻⁵ ／°C），溫度升高 40 °C：ΔL = 1.2 × 10⁻⁵ × 20 × 40 = 9.6 × 10⁻³ m = <b>9.6 mm</b>。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>ΔL 是「增加的長度」，不是「最後長度」，最後長度 = L₀ + ΔL。水不是一直膨脹：0 °C → 4 °C 時體積反而<b>縮小</b>。</p></div>
+  <div class="note one"><b class="tag">一句話記住</b><p>ΔL = αL₀ΔT；β ≈ 3α；水在 4 °C 密度最大。</p></div>
+</section>
+
+<section class="sec lab" id="lab7">
+  <h3><span class="id">實驗</span>氣球溫度計</h3>
+  <p>氣體受熱時體積會<b>膨脹</b>（壓力固定時，體積和絕對溫度成正比）。把氣球或瓶中封閉的氣體放進不同溫度的水中，氣球大小改變，就可以用來「測量溫度」。實際操作以老師上課為主。</p>
+</section>
+
 <section class="sec" id="sum">
   <h3><span class="id">總表</span>考前 1 分鐘公式總複習</h3>
   <p style="margin:0;color:var(--muted);font-size:14px">最左邊是公式出自哪一個單元，忘記時可以翻回那一節看。</p>
@@ -516,7 +834,7 @@ body { touch-action: manipulation; }
       <tr><td><span class="utag">2-3</span></td><td>自由落體</td><td class="f"><span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span>² = 2 <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">落下高度</span><span class="s">h</span><span class="u">m</span></span></td></tr>
       <tr><td><span class="utag">2-3</span></td><td>鉛直上拋</td><td class="f"><span class="v"><span class="zh">最大高度</span><span class="s">H</span><span class="u">m</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">初速度</span><span class="s">v₀</span><span class="u">m/s</span></span>²</span><span class="den">2 <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span></span></span></td></tr>
       <tr><td><span class="utag">實驗</span></td><td>加速度量測</td><td class="f"><span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">第二段位移</span><span class="s">s₂</span><span class="u">m</span></span> − <span class="v"><span class="zh">第一段位移</span><span class="s">s₁</span><span class="u">m</span></span></span><span class="den"><span class="v"><span class="zh">每段時間</span><span class="s">T</span><span class="u">s</span></span>²</span></span></td></tr>
-      <tr><td><span class="utag">3-1</span></td><td>向量合成</td><td class="f">a⃗ + b⃗ = c⃗</td></tr>
+      <tr><td><span class="utag">3-1</span></td><td>向量合成</td><td class="f"><span class="vec">a</span> + <span class="vec">b</span> = <span class="vec">c</span></td></tr>
       <tr><td><span class="utag">3-1</span></td><td>向量分量</td><td class="f"><span class="v"><span class="zh">x分量</span><span class="s">Ax</span><span class="u">&nbsp;</span></span> = <span class="v"><span class="zh">向量大小</span><span class="s">A</span><span class="u">&nbsp;</span></span> cos<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span>，<span class="v"><span class="zh">y分量</span><span class="s">Ay</span><span class="u">&nbsp;</span></span> = <span class="v"><span class="zh">向量大小</span><span class="s">A</span><span class="u">&nbsp;</span></span> sin<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span></td></tr>
       <tr><td><span class="utag">3-1</span></td><td>向量方向</td><td class="f">tan<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">y分量</span><span class="s">Ay</span><span class="u">&nbsp;</span></span></span><span class="den"><span class="v"><span class="zh">x分量</span><span class="s">Ax</span><span class="u">&nbsp;</span></span></span></span></td></tr>
       <tr><td><span class="utag">3-2</span></td><td>頻率</td><td class="f"><span class="v"><span class="zh">頻率</span><span class="s">f</span><span class="u">Hz</span></span> = <span class="frac"><span class="num">1</span><span class="den"><span class="v"><span class="zh">週期</span><span class="s">T</span><span class="u">s</span></span></span></span></td></tr>
@@ -524,11 +842,53 @@ body { touch-action: manipulation; }
       <tr><td><span class="utag">3-2</span></td><td>角速率</td><td class="f"><span class="v"><span class="zh">角速度</span><span class="s">ω</span><span class="u">rad/s</span></span> = <span class="frac"><span class="num">2π</span><span class="den"><span class="v"><span class="zh">週期</span><span class="s">T</span><span class="u">s</span></span></span></span> = 2π<span class="v"><span class="zh">頻率</span><span class="s">f</span><span class="u">Hz</span></span></td></tr>
       <tr><td><span class="utag">3-2</span></td><td>向心加速度</td><td class="f"><span class="v"><span class="zh">向心加速度</span><span class="s">ac</span><span class="u">m/s²</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">速率</span><span class="s">v</span><span class="u">m/s</span></span>²</span><span class="den"><span class="v"><span class="zh">半徑</span><span class="s">R</span><span class="u">m</span></span></span></span> = <span class="frac"><span class="num">4π²<span class="v"><span class="zh">半徑</span><span class="s">R</span><span class="u">m</span></span></span><span class="den"><span class="v"><span class="zh">週期</span><span class="s">T</span><span class="u">s</span></span>²</span></span></td></tr>
       <tr><td><span class="utag">3-2</span></td><td>向心力</td><td class="f"><span class="v"><span class="zh">向心力</span><span class="s">Fc</span><span class="u">N</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">速率</span><span class="s">v</span><span class="u">m/s</span></span>²</span><span class="den"><span class="v"><span class="zh">半徑</span><span class="s">R</span><span class="u">m</span></span></span></span></td></tr>
+      <tr><td><span class="utag">4-1</span></td><td>虎克定律</td><td class="f"><span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> = <span class="v"><span class="zh">彈力常數</span><span class="s">k</span><span class="u">N/m</span></span> <span class="v"><span class="zh">形變量</span><span class="s">x</span><span class="u">m</span></span></td></tr>
+      <tr><td><span class="utag">4-1</span></td><td>重量</td><td class="f"><span class="v"><span class="zh">重量</span><span class="s">W</span><span class="u">N</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span></td></tr>
+      <tr><td><span class="utag">4-1</span></td><td>垂直兩力合力</td><td class="f"><span class="v"><span class="zh">合力</span><span class="s">F合</span><span class="u">N</span></span> = √( <span class="v"><span class="zh">力一</span><span class="s">F₁</span><span class="u">N</span></span>² + <span class="v"><span class="zh">力二</span><span class="s">F₂</span><span class="u">N</span></span>² )</td></tr>
+      <tr><td><span class="utag">4-2</span></td><td>牛頓第二定律</td><td class="f"><span class="v"><span class="zh">合力</span><span class="s">F合</span><span class="u">N</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span></td></tr>
+      <tr><td><span class="utag">4-2</span></td><td>力矩</td><td class="f"><span class="v"><span class="zh">力矩</span><span class="s">τ</span><span class="u">N·m</span></span> = <span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> × <span class="v"><span class="zh">力臂</span><span class="s">d</span><span class="u">m</span></span></td></tr>
+      <tr><td><span class="utag">4-2</span></td><td>電梯視重</td><td class="f"><span class="v"><span class="zh">正向力</span><span class="s">N</span><span class="u">N</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> ( <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> ± <span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> )</td></tr>
+      <tr><td><span class="utag">4-3</span></td><td>萬有引力</td><td class="f"><span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> = <span class="v"><span class="zh">萬有引力常數</span><span class="s">G</span><span class="u">N·m²/kg²</span></span> <span class="frac"><span class="num"><span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span></span><span class="den"><span class="v"><span class="zh">距離</span><span class="s">r</span><span class="u">m</span></span>²</span></span></td></tr>
+      <tr><td><span class="utag">4-3</span></td><td>重力加速度</td><td class="f"><span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> = <span class="v"><span class="zh">萬有引力常數</span><span class="s">G</span><span class="u">N·m²/kg²</span></span> <span class="frac"><span class="num"><span class="v"><span class="zh">中心天體質量</span><span class="s">M</span><span class="u">kg</span></span></span><span class="den"><span class="v"><span class="zh">半徑</span><span class="s">R</span><span class="u">m</span></span>²</span></span></td></tr>
+      <tr><td><span class="utag">4-3</span></td><td>克卜勒第三定律</td><td class="f"><span class="frac"><span class="num"><span class="v"><span class="zh">週期</span><span class="s">T</span><span class="u">s</span></span>²</span><span class="den"><span class="v"><span class="zh">半徑</span><span class="s">R</span><span class="u">m</span></span>³</span></span> = 定值</td></tr>
+      <tr><td><span class="utag">4-3</span></td><td>衛星速率</td><td class="f"><span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span> = √( <span class="frac"><span class="num"><span class="v"><span class="zh">萬有引力常數</span><span class="s">G</span><span class="u">N·m²/kg²</span></span> <span class="v"><span class="zh">中心天體質量</span><span class="s">M</span><span class="u">kg</span></span></span><span class="den"><span class="v"><span class="zh">距離</span><span class="s">r</span><span class="u">m</span></span></span></span> )</td></tr>
+      <tr><td><span class="utag">4-4</span></td><td>動摩擦力</td><td class="f"><span class="v"><span class="zh">動摩擦力</span><span class="s">fk</span><span class="u">N</span></span> = <span class="v"><span class="zh">動摩擦係數</span><span class="s">μk</span><span class="u">無單位</span></span> <span class="v"><span class="zh">正向力</span><span class="s">N</span><span class="u">N</span></span></td></tr>
+      <tr><td><span class="utag">4-4</span></td><td>最大靜摩擦力</td><td class="f"><span class="v"><span class="zh">靜摩擦力</span><span class="s">fs</span><span class="u">N</span></span>(最大) = <span class="v"><span class="zh">靜摩擦係數</span><span class="s">μs</span><span class="u">無單位</span></span> <span class="v"><span class="zh">正向力</span><span class="s">N</span><span class="u">N</span></span></td></tr>
+      <tr><td><span class="utag">4-4</span></td><td>光滑斜面加速度</td><td class="f"><span class="v"><span class="zh">加速度</span><span class="s">a</span><span class="u">m/s²</span></span> = <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> sin<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span></td></tr>
+      <tr><td><span class="utag">5-1</span></td><td>功</td><td class="f"><span class="v"><span class="zh">功</span><span class="s">W</span><span class="u">J</span></span> = <span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> <span class="v"><span class="zh">位移</span><span class="s">s</span><span class="u">m</span></span> cos<span class="v"><span class="zh">夾角</span><span class="s">θ</span><span class="u">°</span></span></td></tr>
+      <tr><td><span class="utag">5-1</span></td><td>功率</td><td class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">功</span><span class="s">W</span><span class="u">J</span></span></span><span class="den"><span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></span></span> = <span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> <span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span></td></tr>
+      <tr><td><span class="utag">5-1</span></td><td>彈簧功</td><td class="f"><span class="v"><span class="zh">功</span><span class="s">W</span><span class="u">J</span></span> = <span class="frac"><span class="num">1</span><span class="den">2</span></span> <span class="v"><span class="zh">彈力常數</span><span class="s">k</span><span class="u">N/m</span></span> <span class="v"><span class="zh">形變量</span><span class="s">x</span><span class="u">m</span></span>²</td></tr>
+      <tr><td><span class="utag">5-2</span></td><td>動能</td><td class="f"><span class="v"><span class="zh">動能</span><span class="s">K</span><span class="u">J</span></span> = <span class="frac"><span class="num">1</span><span class="den">2</span></span> <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span>²</td></tr>
+      <tr><td><span class="utag">5-2</span></td><td>重力位能</td><td class="f"><span class="v"><span class="zh">位能</span><span class="s">U</span><span class="u">J</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">高度</span><span class="s">h</span><span class="u">m</span></span></td></tr>
+      <tr><td><span class="utag">5-2</span></td><td>彈力位能</td><td class="f"><span class="v"><span class="zh">位能</span><span class="s">U</span><span class="u">J</span></span> = <span class="frac"><span class="num">1</span><span class="den">2</span></span> <span class="v"><span class="zh">彈力常數</span><span class="s">k</span><span class="u">N/m</span></span> <span class="v"><span class="zh">形變量</span><span class="s">x</span><span class="u">m</span></span>²</td></tr>
+      <tr><td><span class="utag">5-2</span></td><td>功能定理</td><td class="f"><span class="v"><span class="zh">功</span><span class="s">W</span><span class="u">J</span></span>總 = <span class="v"><span class="zh">動能</span><span class="s">K</span><span class="u">J</span></span>末 − <span class="v"><span class="zh">動能</span><span class="s">K</span><span class="u">J</span></span>初</td></tr>
+      <tr><td><span class="utag">5-3</span></td><td>效率</td><td class="f"><span class="v"><span class="zh">效率</span><span class="s">η</span><span class="u">%</span></span> = <span class="frac"><span class="num">輸出</span><span class="den">輸入</span></span> × 100%</td></tr>
+      <tr><td><span class="utag">5-4</span></td><td>質能互換</td><td class="f"><span class="v"><span class="zh">釋放能量</span><span class="s">E</span><span class="u">J</span></span> = <span class="v"><span class="zh">質量虧損</span><span class="s">Δm</span><span class="u">kg</span></span> <span class="v"><span class="zh">光速</span><span class="s">c</span><span class="u">m/s</span></span>²</td></tr>
+      <tr><td><span class="utag">6-1</span></td><td>動量</td><td class="f"><span class="v"><span class="zh">動量</span><span class="s">p</span><span class="u">kg·m/s</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度</span><span class="s">v</span><span class="u">m/s</span></span></td></tr>
+      <tr><td><span class="utag">6-1</span></td><td>衝量</td><td class="f"><span class="v"><span class="zh">衝量</span><span class="s">J</span><span class="u">N·s</span></span> = <span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> <span class="v"><span class="zh">作用時間</span><span class="s">Δt</span><span class="u">s</span></span> = <span class="v"><span class="zh">動量變化</span><span class="s">Δp</span><span class="u">kg·m/s</span></span></td></tr>
+      <tr><td><span class="utag">6-1</span></td><td>力與動量</td><td class="f"><span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">動量變化</span><span class="s">Δp</span><span class="u">kg·m/s</span></span></span><span class="den"><span class="v"><span class="zh">作用時間</span><span class="s">Δt</span><span class="u">s</span></span></span></span></td></tr>
+      <tr><td><span class="utag">6-2</span></td><td>動量守恆</td><td class="f"><span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度一</span><span class="s">v₁</span><span class="u">m/s</span></span> + <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度二</span><span class="s">v₂</span><span class="u">m/s</span></span> = <span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> <span class="v"><span class="zh">碰後速度一</span><span class="s">v₁′</span><span class="u">m/s</span></span> + <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span> <span class="v"><span class="zh">碰後速度二</span><span class="s">v₂′</span><span class="u">m/s</span></span></td></tr>
+      <tr><td><span class="utag">6-2</span></td><td>完全非彈性</td><td class="f"><span class="v"><span class="zh">碰後速度</span><span class="s">v′</span><span class="u">m/s</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度一</span><span class="s">v₁</span><span class="u">m/s</span></span> + <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span> <span class="v"><span class="zh">速度二</span><span class="s">v₂</span><span class="u">m/s</span></span></span><span class="den"><span class="v"><span class="zh">質量一</span><span class="s">m₁</span><span class="u">kg</span></span> + <span class="v"><span class="zh">質量二</span><span class="s">m₂</span><span class="u">kg</span></span></span></span></td></tr>
+      <tr><td><span class="utag">6-2</span></td><td>恢復係數</td><td class="f"><span class="v"><span class="zh">恢復係數</span><span class="s">e</span><span class="u">無單位</span></span> = −<span class="frac"><span class="num"><span class="v"><span class="zh">碰後速度一</span><span class="s">v₁′</span><span class="u">m/s</span></span> − <span class="v"><span class="zh">碰後速度二</span><span class="s">v₂′</span><span class="u">m/s</span></span></span><span class="den"><span class="v"><span class="zh">速度一</span><span class="s">v₁</span><span class="u">m/s</span></span> − <span class="v"><span class="zh">速度二</span><span class="s">v₂</span><span class="u">m/s</span></span></span></span></td></tr>
+      <tr><td><span class="utag">7-1</span></td><td>密度</td><td class="f"><span class="v"><span class="zh">密度</span><span class="s">ρ</span><span class="u">kg/m³</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span></span><span class="den"><span class="v"><span class="zh">體積</span><span class="s">V</span><span class="u">m³</span></span></span></span></td></tr>
+      <tr><td><span class="utag">7-1</span></td><td>壓力</td><td class="f"><span class="v"><span class="zh">壓力</span><span class="s">P</span><span class="u">Pa</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">力</span><span class="s">F</span><span class="u">N</span></span></span><span class="den"><span class="v"><span class="zh">面積</span><span class="s">A</span><span class="u">m²</span></span></span></span></td></tr>
+      <tr><td><span class="utag">7-1</span></td><td>液體壓力</td><td class="f"><span class="v"><span class="zh">壓力</span><span class="s">P</span><span class="u">Pa</span></span> = <span class="v"><span class="zh">密度</span><span class="s">ρ</span><span class="u">kg/m³</span></span> <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">高度</span><span class="s">h</span><span class="u">m</span></span></td></tr>
+      <tr><td><span class="utag">7-1</span></td><td>浮力</td><td class="f"><span class="v"><span class="zh">浮力</span><span class="s">B</span><span class="u">N</span></span> = <span class="v"><span class="zh">密度</span><span class="s">ρ</span><span class="u">kg/m³</span></span> <span class="v"><span class="zh">重力加速度</span><span class="s">g</span><span class="u">m/s²</span></span> <span class="v"><span class="zh">體積</span><span class="s">V</span><span class="u">m³</span></span></td></tr>
+      <tr><td><span class="utag">7-2</span></td><td>帕斯卡原理</td><td class="f"><span class="frac"><span class="num"><span class="v"><span class="zh">力一</span><span class="s">F₁</span><span class="u">N</span></span></span><span class="den"><span class="v"><span class="zh">面積一</span><span class="s">A₁</span><span class="u">m²</span></span></span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">力二</span><span class="s">F₂</span><span class="u">N</span></span></span><span class="den"><span class="v"><span class="zh">面積二</span><span class="s">A₂</span><span class="u">m²</span></span></span></span></td></tr>
+      <tr><td><span class="utag">7-3</span></td><td>大氣壓力</td><td class="f">1 atm = 76 cmHg = 760 mmHg ≈ 1.013×10⁵ Pa</td></tr>
+      <tr><td><span class="utag">8-1</span></td><td>華氏</td><td class="f"><span class="v"><span class="zh">華氏溫度</span><span class="s">T℉</span><span class="u">°F</span></span> = <span class="frac"><span class="num">9</span><span class="den">5</span></span> <span class="v"><span class="zh">攝氏溫度</span><span class="s">T℃</span><span class="u">°C</span></span> + 32</td></tr>
+      <tr><td><span class="utag">8-1</span></td><td>克氏</td><td class="f"><span class="v"><span class="zh">克氏溫度</span><span class="s">T</span><span class="u">K</span></span> = <span class="v"><span class="zh">攝氏溫度</span><span class="s">T℃</span><span class="u">°C</span></span> + 273</td></tr>
+      <tr><td><span class="utag">8-2</span></td><td>熱量</td><td class="f"><span class="v"><span class="zh">熱量</span><span class="s">Q</span><span class="u">cal</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">比熱</span><span class="s">c</span><span class="u">cal/g·°C</span></span> <span class="v"><span class="zh">溫度變化</span><span class="s">ΔT</span><span class="u">°C</span></span></td></tr>
+      <tr><td><span class="utag">8-2</span></td><td>熱容量</td><td class="f"><span class="v"><span class="zh">熱容量</span><span class="s">C</span><span class="u">cal/°C</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">比熱</span><span class="s">c</span><span class="u">cal/g·°C</span></span></td></tr>
+      <tr><td><span class="utag">8-2</span></td><td>熱平衡</td><td class="f">吸收熱量 = 放出熱量</td></tr>
+      <tr><td><span class="utag">8-3</span></td><td>潛熱</td><td class="f"><span class="v"><span class="zh">熱量</span><span class="s">Q</span><span class="u">cal</span></span> = <span class="v"><span class="zh">質量</span><span class="s">m</span><span class="u">kg</span></span> <span class="v"><span class="zh">潛熱</span><span class="s">L</span><span class="u">cal/g</span></span></td></tr>
+      <tr><td><span class="utag">8-4</span></td><td>線膨脹</td><td class="f"><span class="v"><span class="zh">長度變化</span><span class="s">ΔL</span><span class="u">m</span></span> = <span class="v"><span class="zh">線膨脹係數</span><span class="s">α</span><span class="u">1/°C</span></span> <span class="v"><span class="zh">原長</span><span class="s">L₀</span><span class="u">m</span></span> <span class="v"><span class="zh">溫度變化</span><span class="s">ΔT</span><span class="u">°C</span></span></td></tr>
+      <tr><td><span class="utag">8-4</span></td><td>體膨脹</td><td class="f"><span class="v"><span class="zh">體積變化</span><span class="s">ΔV</span><span class="u">m³</span></span> = <span class="v"><span class="zh">體膨脹係數</span><span class="s">β</span><span class="u">1/°C</span></span> <span class="v"><span class="zh">原體積</span><span class="s">V₀</span><span class="u">m³</span></span> <span class="v"><span class="zh">溫度變化</span><span class="s">ΔT</span><span class="u">°C</span></span></td></tr>
     </tbody>
   </table></div>
 </section>
 
-<footer>依課本目錄 1-1～3-2、重點整理與實驗小棧整理。若與老師上課有出入，以老師為主。</footer>
+<footer>依課本目錄 1-1～8-4 與各章實驗小棧整理。第 4～8 章為依課本章節與常見考點整理，若與老師上課有出入，以老師為主。</footer>
 </div>
 
 <script>

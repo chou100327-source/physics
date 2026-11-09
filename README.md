@@ -1,4 +1,4 @@
-# 物理 重點整理（高職一年級）
+# 物理上學期重點整理（高職一年級）
 
 Physics study notes for Taiwanese vocational high school students (高職 / 技高).
 
